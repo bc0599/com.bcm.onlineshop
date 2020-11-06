@@ -5,7 +5,7 @@ require "bootstrap.php";
 <link rel="stylesheet" type="text/css" href="styles/styles.css">
 
 <?php
-require "header.php";
+require "components/header.php";
 ?>
 
 <main>
@@ -15,7 +15,7 @@ require "header.php";
     <div class="margin-top row d-flex justify-content-between">
 
         <?php
-        require "signup_card.php";
+        require "components/signup_card.php";
         ?>
 
    

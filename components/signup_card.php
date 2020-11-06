@@ -36,9 +36,10 @@ require "bootstrap.php";
                         </div>
                         <input type="password" name="pwd" class="form-control" placeholder="Password">
                     </div>
+                    
                 
-                <div class="form-group">
-                    <input type="submit" name="signup-submit" value="Login" class="btn float-right login_btn">
+                <div class="form-group" >
+                    <button type="submit" name="signup-submit" class="btn float-right login_btn">Sign Up</button>
                 </div>
                 </form>
             </div>
