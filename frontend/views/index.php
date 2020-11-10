@@ -1,4 +1,11 @@
 <?php
 require_once '../../backend/core/init.php';
 
-DB::getInstance()->query("SELECT Username FROM customer WHERE Username= ?", array('Betsabe'));
+$user= DB::getInstance()->get('customer', array('Username', '=', 'Betsabe'));
+
+if(!$user->count()){
+    echo 'No user';
+}
+else{
+    echo $user->first()->Username;
+}
