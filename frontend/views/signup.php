@@ -26,8 +26,22 @@ if(Input::exists()){
    ));
 
    if($validation->passed()){
-       Session::flash('success', 'You registered successfully!');
-       header('Location: index.php');
+       $user=new User();
+
+       try{
+           $user->create(array(
+               'Username'=> Input::get('Username'),
+               'Email'=> Input::get('Email'),
+               'UserPassword'=> Input::get('UserPassword'),
+               'Balance'=>100.0
+           ));
+
+           Session::flash('login', 'You have been registered and can now login.');
+           header('Location: login.php');
+
+       }catch(Exception $e){
+           die($e->getMessage());
+       }
    }
    else{
        foreach($validation->errors() as $error){

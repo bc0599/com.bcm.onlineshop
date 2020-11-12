@@ -34,7 +34,7 @@ require "bootstrap.php";
 						<div class="input-group-prepend">
                             <span class="input-group-text"><i class="fas fa-key"></i></span>
                         </div>
-                        <input type="UserPassword" name="UserPassword" id="UserPassword" class="form-control" value="" autocomplete="off" placeholder="Password">
+                        <input type="password" name="UserPassword" id="UserPassword" class="form-control" value="" autocomplete="off" placeholder="Password">
                     </div>  
 
                     <input type="hidden" name="token" value="<?php echo Token::generate();?>"></input>
