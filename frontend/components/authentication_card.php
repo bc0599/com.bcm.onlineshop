@@ -18,7 +18,7 @@ require "bootstrap.php";
 						<div class="input-group-prepend">
 							<span class="input-group-text"><i class="fas fa-envelope"></i></span>
             </div>
-            <input type="text" name="mail" class="form-control" placeholder="E-mail">
+            <input type="text" name="Username" class="form-control" placeholder="Username">
           </div>
           
 					<div class="input-group form-group">
@@ -26,7 +26,7 @@ require "bootstrap.php";
               <span class="input-group-text"><i class="fas fa-key"></i></span>
             </div>
 
-						<input type="password" name="pwd" class="form-control" placeholder="Password">
+						<input type="UserPassword" name="UserPassword" class="form-control" placeholder="UserPassword">
           </div>
           
           <div class="form-group">

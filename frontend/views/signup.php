@@ -1,11 +1,47 @@
 <?php
 require "bootstrap.php";
+
+require_once '../../backend/core/init.php';
+
+if(Input::exists()){
+
+    if(Token::check(Input::get('token'))){
+
+        $validate=new Validate();
+        $validation=$validate->check($_POST, array(
+        'Username'=> array(
+                'required'=> true,
+                'min'=> 2,
+                'max'=> 20,
+                'unique'=> 'customer'
+       ),
+        'Email'=> array(
+                'required'=>true,
+                'min'=> 4,
+       ),
+       'UserPassword'=> array(
+                'required'=>true,
+                'min'=> 6,
+       )
+   ));
+
+   if($validation->passed()){
+       Session::flash('success', 'You registered successfully!');
+       header('Location: index.php');
+   }
+   else{
+       foreach($validation->errors() as $error){
+           echo $error, '<br>';
+       }
+   }
+}
+}
 ?>
 
-<link rel="stylesheet" type="text/css" href="styles/styles.css">
+<link rel="stylesheet" type="text/css" href="../styles/styles.css">
 
 <?php
-require "components/header.php";
+require "../components/header.php";
 ?>
 
 <main>
@@ -15,11 +51,11 @@ require "components/header.php";
     <div class="margin-top row d-flex justify-content-between">
 
         <?php
-        require "components/signup_card.php";
+        require "../components/signup_card.php";
         ?>
 
    
-        <img class="margin-left" width="400" height="400" src="img/shop-online.gif">
+        <img class="margin-left" width="400" height="400" src="../img/shop-online.gif">
     
 
     </div>

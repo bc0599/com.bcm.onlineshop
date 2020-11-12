@@ -4,13 +4,13 @@ require "bootstrap.php";
 
 ?>
 
-<link rel="stylesheet" type="text/css" href="styles/styles.css">
+<link rel="stylesheet" type="text/css" href="../styles/styles.css">
 
 <!-- Image and text -->
 <nav class="navbar navbar-expand-sm navbar-light bg-light">
   
   <a class="navbar-brand" href="#">
-    <img src="img/logo.jpg" width="110" height="110" class="d-inline-block align-top rounded-circle" alt="">
+    <img src="../img/logo.jpg" width="110" height="110" class="d-inline-block align-top rounded-circle" alt="">
   </a>
 
   <h3 class="navbar-text">Online Shop</h3>

@@ -12,14 +12,14 @@ require "bootstrap.php";
 
 			<div class="card-body">
 
-                <form action="includes/signup.inc.php" method="post">
+                <form action="" method="post">
                 
                 <div class="input-group form-group">
 
-						<div class="input-group-prepend">
+						<div class="input-group-prepend ">
                             <span class="input-group-text"><i class="fas fa-user"></i></span>
                         </div>
-                        <input type="text" name="name" class="form-control" placeholder="First Name">
+                        <input type="text" name="Username" id="Username" class="form-control" value="<?php echo escape(Input::get('Username')); ?>" autocomplete="off" placeholder="Username">
                     </div>
 
 					<div class="input-group form-group">
@@ -27,16 +27,17 @@ require "bootstrap.php";
                             <span class="input-group-text"><i class="fas fa-envelope"></i></span>
                          </div>
                          
-                         <input type="text" name="mail" class="form-control" placeholder="E-mail">
+                         <input type="text" name="Email" id="Email" autocomplete="off" class="form-control" value="<?php echo escape(Input::get('Email')); ?>" placeholder="E-mail">
                         </div>
           
 					<div class="input-group form-group">
 						<div class="input-group-prepend">
                             <span class="input-group-text"><i class="fas fa-key"></i></span>
                         </div>
-                        <input type="password" name="pwd" class="form-control" placeholder="Password">
-                    </div>
-                    
+                        <input type="UserPassword" name="UserPassword" id="UserPassword" class="form-control" value="" autocomplete="off" placeholder="Password">
+                    </div>  
+
+                    <input type="hidden" name="token" value="<?php echo Token::generate();?>"></input>
                 
                 <div class="form-group" >
                     <button type="submit" name="signup-submit" class="btn float-right login_btn">Sign Up</button>
