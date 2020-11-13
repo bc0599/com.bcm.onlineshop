@@ -30,9 +30,8 @@ class User{
 
     public function find($user=null){
         if($user){
-            $field=(is_numeric($user)) ? 'CustomerId' : 'CustomerId';
+            $field=(is_numeric($user)) ? 'CustomerId' : 'Username';
             $data = $this->_db->get('customer', array($field, '=', $user));
-            echo gettype($data);
             if($data->count()) {
                 $this->_data = $data->first();
                 return true;
@@ -52,6 +51,10 @@ class User{
 
         }
         return false;
+    }
+
+    public function logout(){
+        Session::delete($this->_sessionName);
     }
 
     public function data(){
