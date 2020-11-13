@@ -37,8 +37,13 @@ require "bootstrap.php";
           <div class="form-group">
 				<input type="submit" name="login-submit" value="Login" class="btn float-right login_btn">
           </div>
-          
-				</form>
+
+		  <div class="form-check d-inline-flex p-2">
+    		<input type="checkbox" id="remember" name="remember" class="form-check-input" id="remember">
+    		<label class="form-check-label" style="color:white;" for="remember">Remember me</label>
+  		</div>
+		  
+		  </form>
       
       </div>
 

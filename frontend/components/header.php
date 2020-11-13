@@ -37,9 +37,9 @@ require "bootstrap.php";
 
         <form action="includes/logout.inc.php" method="post">
 
-        <li class="nav-item">
+        <!--<li class="nav-item">
         <input type="submit" name="logout-submit" value="Logout" class="btn float-right login_btn">
-        </li>
+        </li>-->
         </form>
       </ul>
     </div>

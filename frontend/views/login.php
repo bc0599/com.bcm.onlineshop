@@ -13,10 +13,12 @@ if(Input::exists()){
 
    if($validation->passed()){
        $user=new User();
-       $login=$user->login(Input::get('Username'), Input::get('UserPassword'));
+
+       $remember=(Input::get('remember')==='on') ? true : false;
+       $login=$user->login(Input::get('Username'), Input::get('UserPassword'), $remember);
 
        if($login){
-           Redirect::to('index.php');
+           Redirect::to('profile.php');
        }else{
            echo '<p>Failed</p>';
        }
