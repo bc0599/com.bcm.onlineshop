@@ -12,25 +12,30 @@ require "bootstrap.php";
 
 			<div class="card-body">
 
-				<form action="includes/login.inc.php" method="post">
+				<form action="" method="post">
 
 					<div class="input-group form-group">
 						<div class="input-group-prepend">
 							<span class="input-group-text"><i class="fas fa-envelope"></i></span>
-            </div>
-            <input type="text" name="Username" class="form-control" placeholder="Username">
-          </div>
+							
+							</div>
+							
+							<input type="text" name="Username" id="Username" autocomplete="off" class="form-control" placeholder="Username">
+							
+							</div>
           
 					<div class="input-group form-group">
 						<div class="input-group-prepend">
               <span class="input-group-text"><i class="fas fa-key"></i></span>
             </div>
 
-						<input type="UserPassword" name="UserPassword" class="form-control" placeholder="UserPassword">
+				<input type="password" name="UserPassword" id="UserPassword" autocomplete="off" class="form-control" placeholder="Password">
           </div>
+
+		  <input type="hidden" name="token" value="<?php echo Token::generate();?>"></input>
           
           <div class="form-group">
-						<input type="submit" name="login-submit" value="Login" class="btn float-right login_btn">
+				<input type="submit" name="login-submit" value="Login" class="btn float-right login_btn">
           </div>
           
 				</form>

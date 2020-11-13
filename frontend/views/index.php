@@ -1,6 +1,10 @@
 <?php
 require_once '../../backend/core/init.php';
 
-if(Session::exists('success')){
-    echo Session::flash('success');
+$user=new User();
+echo $user->data()->CustomerId;
+if($user->isLoggedIn()){
+    echo 'User is logged in';
 }
+
+
