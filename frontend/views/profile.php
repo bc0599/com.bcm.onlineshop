@@ -3,7 +3,7 @@
 require_once '../../backend/core/init.php';
 ?>
 
-<link rel="stylesheet" type="text/css" href="../styles/styles.css">
+<link rel="stylesheet" type="text/css" href="../styles/app_styles.css">
 
 <main>
 

@@ -35,7 +35,7 @@
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
         <h6 class="dropdown-header">Hello! <?php echo escape($user->data()->Username); ?></h6>
-          <a class="dropdown-item" href="#">Dashboard</a>
+          <a class="dropdown-item" href="#">Cart</a>
           <a class="dropdown-item" href="#">Edit Profile</a>
           <a class="dropdown-item" href="logout.php">Log Out</a>
         </div>

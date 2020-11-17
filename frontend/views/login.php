@@ -50,7 +50,7 @@ require "../components/header.php";
         require "../components/authentication_card.php";
         ?>
 
-        <img class="margin-left" width="400" height="400" src="../img/shop-online.gif">
+        <img class="margin-left" width="400" height="400" src="../img/shop-online.png">
     
 
     </div>
