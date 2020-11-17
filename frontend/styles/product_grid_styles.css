@@ -1,0 +1,36 @@
+@import url('https://fonts.googleapis.com/css?family=Numans');
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+
+html,body{
+    background-image: linear-gradient(62deg, #8EC5FC 0%, #E0C3FC 100%);    
+    background-size: cover;
+    background-repeat: no-repeat;
+    font-family: 'Numans', sans-serif;
+    }
+
+.container{
+height: 100%;
+align-content: center;
+}
+
+.grid-container {
+    display: grid;  
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  }
+  
+
+.margin-top { margin-top: 50px; }
+
+.margin-right {margin-right: 50px;}
+
+.margin-left {margin-left: 50px;}
+
+.margin-bottom {margin-bottom: 50px;}
+
+.margin{margin: 50px;}
+
+.card-deck {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    grid-gap: .5rem;
+}

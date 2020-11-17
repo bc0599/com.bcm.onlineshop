@@ -1,7 +1,8 @@
 @import url('https://fonts.googleapis.com/css?family=Numans');
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
 
 html,body{
-    background-image: linear-gradient(43deg, #4158D0 0%, #C850C0 34%, #FFCC70 100%);
+    background-image: linear-gradient(62deg, #8EC5FC 0%, #E0C3FC 100%);    
     background-size: cover;
     background-repeat: no-repeat;
     font-family: 'Numans', sans-serif;
@@ -22,7 +23,7 @@ align-content: center;
 
 .margin{margin: 50px;}
 
-.card{
+.login-card{
 height: 370px;
 margin-top: auto;
 margin-bottom: auto;
@@ -39,10 +40,6 @@ background-image: radial-gradient( circle farthest-corner at 10% 20%,  rgba(255,
 .social_icon span:hover{
 color: white;
 cursor: pointer;
-}
-
-.card-header h3{
-color: white;
 }
 
 .social_icon{
@@ -94,3 +91,11 @@ color: white;
 .links a{
 margin-left: 4px;
 }
+
+.bg-custom-1 {
+    background-color: #85144b;
+  }
+  
+  .bg-custom-2 {
+  background-image: linear-gradient(15deg, #13547a 0%, #80d0c7 100%);
+  }

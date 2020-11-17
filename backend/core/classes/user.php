@@ -41,9 +41,12 @@ class User{
         return false;
     }
 
-    public function login($username=null, $password=null, $remember){
+    public function login($username=null, $password=null, $remember=false){
         
-        $user=$this->find($username);
+        if(!$username && !$password && $this->exists()){
+            Session::put($this->_sessionName, $this->data()->CustomerId);
+        }else{
+            $user=$this->find($username);
 
         if($user){
             if($this->data()->password=$password){
@@ -70,13 +73,21 @@ class User{
                 }
                 return true;
             }
-
         }
+
+    }
         return false;
     }
 
+    public function exists(){
+        return (!empty($this->_data)) ? true : false;
+    }
+
     public function logout(){
+        $this->_db->delete('customer_session', array('CustomerId', '=', $this->data()->CustomerId));
+
         Session::delete($this->_sessionName);
+        Cookie::delete($this->_cookieName);
     }
 
     public function data(){
