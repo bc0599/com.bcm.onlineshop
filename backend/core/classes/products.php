@@ -11,18 +11,6 @@ class Products{
         }
     }
 
-    public function create($fields=array()){
-        if(!$this->_db->insert('customer_order', $fields)){
-            throw new Exception ('There was a problem creating the order.');
-            }
-    }
-
-    public function createOrderItems($fields=array()){
-        if(!$this->_db->insert('orderitem', $fields)){
-            throw new Exception ('There was a problem creating the order.');
-            }
-    }
-
     public function find($product=null){
         if($product){
             $field=(is_numeric($product)) ? 'ProductId' : 'ProductName';

@@ -23,6 +23,17 @@ class User{
     }
 }
 
+    public function update($fields=array(), $id=null){
+
+        if(!$id && $this->isLoggedIn()){
+            $id= $this->data()->CustomerId;
+        }
+
+        if(!$this->_db->update('customer', $id, $fields)){
+            throw new Exception ('There was a problem updating the user.');
+        }
+    }
+
     public function create($fields=array()){
         if(!$this->_db->insert('customer', $fields)){
             throw new Exception ('There was a problem creating the user.');

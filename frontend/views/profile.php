@@ -10,7 +10,7 @@ require_once '../../backend/core/init.php';
 <?php
 
 $user=new User();
-
+$order= new Order();
 if($user->isLoggedIn()){
 require "../components/user_header.php";
 require "../components/product_grid.php";
@@ -19,6 +19,7 @@ require "../components/product_grid.php";
 
 <?php
 }else{
+    require "../components/header.php";
     echo '<p> Logout successful, to view the contents of this page, please <a href="login.php">log in or </a> <a href="signup.php"> register </a> </p>';
 }
 ?>

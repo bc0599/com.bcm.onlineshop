@@ -6,27 +6,65 @@ $product_apple= new Products('Apple');
 $product_beer= new Products('Beer');
 $product_water= new Products('Water');
 $product_cheese= new Products('Cheese');
-$order= new Products();
+$order_item= new Order();
+$order_item= new Order();
 $user=new User();
 
 if(isset($_POST['checkout'])){
+
+    $today = date("Ymd");
+    $rand= rand();
+    $unique = $today . $rand . $user->data()->CustomerId . $product_apple->data()->ProductId;
     
 try{
     $order->create(array(
+        'OrderId' => $unique,
         'CustomerId'=> $user->data()->CustomerId,
         'TotalAmount'=> $_POST['TotalAmount']
     ));
 
-    $order->createOrderItems(array(
-        'OrderId'=> '',
-        'ProductId' => '',
-        'Quantity' => '',
-        'UnitPrice' => ''
+    if($_POST['Apple']>0){
+        $order_item->createOrderItems(array(
+            'OrderId'=> $unique,
+            'ProductId' => $product_apple->data()->ProductId,
+            'Quantity' => $_POST['Apple'],
+            'UnitPrice' => 0.30
+        ));
+    }
+    
+    if($_POST['Beer']>0){
+        $order_item->createOrderItems(array(
+            'OrderId'=> $unique,
+            'ProductId' => $product_beer->data()->ProductId,
+            'Quantity' => $_POST['Beer'],
+            'UnitPrice' => 2.00
+        ));
+    }
+    
+    if($_POST['Water']>0){
+        $order_item->createOrderItems(array(
+            'OrderId'=> $unique,
+            'ProductId' => $product_water->data()->ProductId,
+            'Quantity' => $_POST['Water'],
+            'UnitPrice' => 1.00
+        ));
+    }
+
+    if($user->data()->Balance > $_POST['TotalAmount']){
+
+    $user->update(array(
+        'Balance' => $user->data()->Balance - $_POST['TotalAmount']
     ));
+     echo $user->data()->Balance;
+
+    }else{
+        echo 'Not enough money';
+    }
 
 }catch(Exception $e){
     die($e->getMessage());
 }
+
 }
 
 ?>
