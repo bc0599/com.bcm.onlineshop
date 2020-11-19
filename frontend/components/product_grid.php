@@ -6,6 +6,29 @@ $product_apple= new Products('Apple');
 $product_beer= new Products('Beer');
 $product_water= new Products('Water');
 $product_cheese= new Products('Cheese');
+$order= new Products();
+$user=new User();
+
+if(isset($_POST['checkout'])){
+    
+try{
+    $order->create(array(
+        'CustomerId'=> $user->data()->CustomerId,
+        'TotalAmount'=> $_POST['TotalAmount']
+    ));
+
+    $order->createOrderItems(array(
+        'OrderId'=> '',
+        'ProductId' => '',
+        'Quantity' => '',
+        'UnitPrice' => ''
+    ));
+
+}catch(Exception $e){
+    die($e->getMessage());
+}
+}
+
 ?>
 
 <head><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous"></head>
@@ -21,20 +44,96 @@ $product_cheese= new Products('Cheese');
 
     function increment(string) {
       switch(string) {
-        case 'inc':
-          document.getElementById('inc').value = ++i;
+
+        case 'Apple':
+
+        if(document.getElementById('Apple').value < 99){
+
+          document.getElementById('Apple').value = ++i;
+          document.getElementById('TotalAmount').value = (Number(document.getElementById('TotalAmount').value)+ Number(0.3)).toFixed(2);
+        }
         break;
         
-        case 'inc1':
-          document.getElementById('inc1').value = ++j;
+        case 'Beer':
+
+        if(document.getElementById('Beer').value < 99){
+
+          document.getElementById('Beer').value = ++j;
+          document.getElementById('TotalAmount').value = (Number(document.getElementById('TotalAmount').value)+ Number(2.00)).toFixed(2);
+        }
         break;
 
-        case 'inc2':
-          document.getElementById('inc2').value = ++k;
+        case 'Water':
+
+        if(document.getElementById('Water').value < 99){
+
+          document.getElementById('Water').value = ++k;
+          document.getElementById('TotalAmount').value = (Number(document.getElementById('TotalAmount').value)+ Number(1.00)).toFixed(2);
+        }
         break;
 
-        case 'inc3':
-          document.getElementById('inc3').value = ++m;
+        case 'Cheese':
+
+        if(document.getElementById('Cheese').value < 99){
+
+          document.getElementById('Cheese').value = ++m;
+          document.getElementById('TotalAmount').value = (Number(document.getElementById('TotalAmount').value)+ Number(3.74)).toFixed(2);
+        }
+        break;
+    }
+
+    }
+
+</script>
+
+<script type="text/javascript">
+    var i = 0;
+    var j = 0;
+    var k = 0;
+    var m = 0;
+
+    function decrement(string) {
+      switch(string) {
+          
+        case 'Apple':
+
+        if(document.getElementById('Apple').value > 0){
+
+          document.getElementById('Apple').value = --i;
+          console.log(document.getElementById('Apple').value);
+          document.getElementById('TotalAmount').value = (Number(document.getElementById('TotalAmount').value)- Number(0.30)).toFixed(2);
+
+        }
+        break;
+        
+        case 'Beer':
+
+        if(document.getElementById('Beer').value > 0){
+         
+          document.getElementById('Beer').value = --j;
+         
+          document.getElementById('TotalAmount').value = (Number(document.getElementById('TotalAmount').value)- Number(2.00)).toFixed(2);
+        }
+        break;
+
+        case 'Water':
+
+        if(document.getElementById('Water').value > 0){
+
+          document.getElementById('Water').value = --k;
+          document.getElementById('TotalAmount').value = (Number(document.getElementById('TotalAmount').value)- Number(1.00)).toFixed(2);
+        
+        }
+        break;
+
+        case 'Cheese':
+
+        if(document.getElementById('Cheese').value > 0){
+
+          document.getElementById('Cheese').value = --m;
+          document.getElementById('TotalAmount').value = (Number(document.getElementById('TotalAmount').value)- Number(3.74)).toFixed(2);
+        
+        }
         break;
     }
 
@@ -45,24 +144,22 @@ $product_cheese= new Products('Cheese');
 <script type="text/javascript">
 
 function getProducts(){
-      var apple_quan = document.getElementById("inc").value;
+      
+      var apple_quan = document.getElementById("Apple").value;
           apple_total=apple_quan * 0.30;
-          console.log(apple_total)
 
-      var beer_quan = document.getElementById("inc1").value;
+      var beer_quan = document.getElementById("Beer").value;
           beer_total=beer_quan * 2.00;
-          console.log(beer_total)
 
-      var water_quan = document.getElementById("inc2").value;
+      var water_quan = document.getElementById("Water").value;
           water_total=water_quan * 1.00;
-          console.log(water_total)
 
-      var cheese_quan = document.getElementById("inc3").value;
+      var cheese_quan = document.getElementById("Cheese").value;
           cheese_total=cheese_quan * 3.74;
-          console.log(cheese_total)
 
       var total_amount= apple_total+beer_total+water_total+cheese_total;
-      console.log(total_amount)
+
+      document.getElementById("TotalAmount").value= total_amount;
     }
 </script>
 
@@ -73,7 +170,12 @@ function getProducts(){
                 Products
                 <div class="clearfix"></div>
             </div>
+
+            <form action="" method="post">
+            <div class="input-group form-group">
+
             <div class="card-body">
+
                     <!-- PRODUCT -->
                     <div class="row">
                         <div class="col-12 col-sm-12 col-md-2 text-center">
@@ -91,10 +193,10 @@ function getProducts(){
                             </div>
                             <div class="col-4 col-sm-4 col-md-4">
                                 <div class="quantity">
-                                    <input type="button" onclick="increment('inc')" value="+" class="plus">
-                                    <input type="number" id="inc" step="1" max="99" min="1" value="1" title="Qty" class="qty"
+                                    <input type="button" onclick="increment('Apple')" value="+" class="plus">
+                                    <input type="number" style="cursor: default;" readonly id="Apple" name="Apple" step="1" max="99" min="0" value="0" title="Qty" class="qty"
                                            size="4">
-                                    <input type="button" value="-" class="minus">
+                                    <input type="button" onclick="decrement('Apple')" value="-" class="minus">
                                 </div>
                             </div>
                             <div class="col-2 col-sm-2 col-md-2 text-right">
@@ -106,6 +208,7 @@ function getProducts(){
                     </div>
                     <hr>
                     <!-- END PRODUCT -->
+
                     <!-- PRODUCT -->
                     <div class="row">
                         <div class="col-12 col-sm-12 col-md-2 text-center">
@@ -123,10 +226,10 @@ function getProducts(){
                             </div>
                             <div class="col-4 col-sm-4 col-md-4">
                                 <div class="quantity">
-                                    <input type="button" onclick="increment('inc1')" value="+" class="plus" >
-                                    <input type="number" id="inc1" step="1" max="99" min="1" value="1" title="Qty" class="qty"
+                                    <input type="button" onclick="increment('Beer')" value="+" class="plus" >
+                                    <input type="number" style="cursor: default;" readonly id="Beer" name="Beer" step="1" max="99" min="0" value="0" title="Qty" class="qty"
                                            size="4">
-                                    <input type="button" value="-" class="minus">
+                                    <input type="button" onclick="decrement('Beer')" value="-" class="minus">
                                 </div>
                             </div>
                             <div class="col-2 col-sm-2 col-md-2 text-right">
@@ -156,10 +259,10 @@ function getProducts(){
                             </div>
                             <div class="col-4 col-sm-4 col-md-4">
                                 <div class="quantity">
-                                    <input type="button" onclick="increment('inc2')" value="+" class="plus">
-                                    <input type="number" id="inc2" step="1" max="99" min="1" value="1" title="Qty" class="qty"
+                                    <input type="button" onclick="increment('Water')" value="+" class="plus">
+                                    <input type="number" style="cursor: default;" readonly id="Water" name="Water" step="1" max="99" min="0" value="0" title="Qty" class="qty"
                                            size="4">
-                                    <input type="button" value="-" class="minus">
+                                    <input type="button" onclick="decrement('Water')" value="-" class="minus">
                                 </div>
                             </div>
                             <div class="col-2 col-sm-2 col-md-2 text-right">
@@ -189,10 +292,10 @@ function getProducts(){
                             </div>
                             <div class="col-4 col-sm-4 col-md-4">
                                 <div class="quantity">
-                                    <input type="button" onclick="increment('inc3')" value="+" class="plus">
-                                    <input type="number" id="inc3" step="1" max="99" min="1" value="1" title="Qty" class="qty"
+                                    <input type="button" onclick="increment('Cheese')" value="+" class="plus">
+                                    <input type="number" style="cursor: default;" readonly id="Cheese" name="Cheese" step="1" max="99" min="0" value="0" title="Qty" class="qty"
                                            size="4">
-                                    <input type="button" value="-" class="minus">
+                                    <input type="button" onclick="decrement('Cheese')" value="-" class="minus">
                                 </div>
                             </div>
                             <div class="col-2 col-sm-2 col-md-2 text-right">
@@ -204,14 +307,18 @@ function getProducts(){
                     </div>
                     <hr>
                     <!-- END PRODUCT -->
-            </div>
+
             <div class="card-footer">
                 <div class="pull-right" style="margin: 10px">
-                <button type="button" onclick="getProducts()" class="btn btn-success pull-right">Checkout</button>
+                <input type="submit" name="checkout" onclick="getProducts()" class="btn btn-success pull-right" value="Checkout"></input>
                     <div class="pull-right" style="margin: 5px">
-                        Total price: <b>50.00€</b>
+                        Total price: <b><input type="number" style="cursor: default;" readonly id="TotalAmount" name="TotalAmount" size="4"></b>
                     </div>
                 </div>
             </div>
+            </div>
+            </div>
+        </form>
+
         </div>
 </div>

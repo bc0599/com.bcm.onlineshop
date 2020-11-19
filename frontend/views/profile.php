@@ -12,10 +12,9 @@ require_once '../../backend/core/init.php';
 $user=new User();
 
 if($user->isLoggedIn()){
-?>
-<?php
 require "../components/user_header.php";
 require "../components/product_grid.php";
+
 ?>
 
 <?php

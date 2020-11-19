@@ -14,7 +14,7 @@
                 
                 <div class="input-group form-group">
 
-						<div class="input-group-prepend ">
+						<div class="input-group-prepend">
                         <span class="input-group-text">
 
 								<svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-person-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
