@@ -10,14 +10,16 @@ $order= new Order();
 $order_item= new OrderItem();
 $user=new User();
 
-
-if(isset($_POST['confirmCheckout'])){   
+if(isset($_POST['delivery'])){  
 
     echo "<script type='text/javascript'>
     $(document).ready(function(){
-        $('#deliveryMethod').modal('show');
+        $('#exampleModal').modal('show');
     });
     </script>";
+}
+
+if(isset($_POST['confirmCheckout'])){   
     
 try{
 
@@ -62,8 +64,8 @@ $unique = date("Ymd") . rand() . $user->data()->CustomerId . $product_apple->dat
         'Balance' => $user->data()->Balance - $_POST['TotalAmount']
     ));
      
-    //header("Location: index.php");
-    //exit;
+    header("Location: index.php");
+    exit;
 
     }else{
         echo "<script type='text/javascript'>
@@ -76,24 +78,29 @@ $unique = date("Ymd") . rand() . $user->data()->CustomerId . $product_apple->dat
 }catch(Exception $e){
     die($e->getMessage());
 }
-
 }
-
 ?>
 
-<head><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous"></head>
+<head><link rel="stylesheet" href="https:cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous"></head>
 <link rel="stylesheet" type="text/css" href="../styles/cart_styles.css">
 
-<script src="https://use.fontawesome.com/c560c025cf.js"></script>
+<script src="https:use.fontawesome.com/c560c025cf.js"></script>
 
 <script type="text/javascript">
     var i = 0;
     var j = 0;
     var k = 0;
     var m = 0;
+    var b = 0;
 
     function increment(string) {
       switch(string) {
+
+        case 'delivery':
+
+            document.getElementById('TotalAmount').value = (Number(document.getElementById('TotalAmount').value)+ Number(5)).toFixed(2);
+
+        break;
 
         case 'Apple':
 
@@ -338,7 +345,7 @@ $unique = date("Ymd") . rand() . $user->data()->CustomerId . $product_apple->dat
 
             <div class="card-footer">
                 <div class="pull-right" style="margin: 10px">
-                <input type="button" name="checkout" data-toggle="modal" data-target="#exampleModal" class="btn btn-success pull-right" value="Checkout"></input>
+                <input type="button" name="checkout" data-toggle="modal" data-target="#deliveryMethod" class="btn btn-success pull-right" value="Checkout"></input>
                     <div class="pull-right" style="margin: 5px">
                         Total price: <b><input type="number" style="cursor: default;" readonly id="TotalAmount" name="TotalAmount" size="4"></b>
                     </div>
@@ -391,7 +398,7 @@ $unique = date("Ymd") . rand() . $user->data()->CustomerId . $product_apple->dat
         </div>
         <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-            <button type="submit" name="delivery" class="btn btn-danger">Delivery (+1$)</button>
+            <button type="button" onclick="increment('delivery')" data-dismiss="modal" name="delivery"  class="btn btn-danger">Delivery (+1$)</button>
             <button type="submit" name="pickup" class="btn btn-danger">Pick-Up (FREE)</button>
         </div>
         </div>
