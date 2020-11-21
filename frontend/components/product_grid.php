@@ -6,17 +6,23 @@ $product_apple= new Products('Apple');
 $product_beer= new Products('Beer');
 $product_water= new Products('Water');
 $product_cheese= new Products('Cheese');
-$order_item= new Order();
-$order_item= new Order();
+$order= new Order();
+$order_item= new OrderItem();
 $user=new User();
 
-if(isset($_POST['checkout'])){
 
-    $today = date("Ymd");
-    $rand= rand();
-    $unique = $today . $rand . $user->data()->CustomerId . $product_apple->data()->ProductId;
+if(isset($_POST['confirmCheckout'])){   
+
+    echo "<script type='text/javascript'>
+    $(document).ready(function(){
+        $('#deliveryMethod').modal('show');
+    });
+    </script>";
     
 try{
+
+$unique = date("Ymd") . rand() . $user->data()->CustomerId . $product_apple->data()->ProductId;
+
     $order->create(array(
         'OrderId' => $unique,
         'CustomerId'=> $user->data()->CustomerId,
@@ -55,10 +61,16 @@ try{
     $user->update(array(
         'Balance' => $user->data()->Balance - $_POST['TotalAmount']
     ));
-     echo $user->data()->Balance;
+     
+    //header("Location: index.php");
+    //exit;
 
     }else{
-        echo 'Not enough money';
+        echo "<script type='text/javascript'>
+        $(document).ready(function(){
+            $('#notMoney').modal('show');
+        });
+        </script>";
     }
 
 }catch(Exception $e){
@@ -177,28 +189,6 @@ try{
 
     }
 
-</script>
-
-<script type="text/javascript">
-
-function getProducts(){
-      
-      var apple_quan = document.getElementById("Apple").value;
-          apple_total=apple_quan * 0.30;
-
-      var beer_quan = document.getElementById("Beer").value;
-          beer_total=beer_quan * 2.00;
-
-      var water_quan = document.getElementById("Water").value;
-          water_total=water_quan * 1.00;
-
-      var cheese_quan = document.getElementById("Cheese").value;
-          cheese_total=cheese_quan * 3.74;
-
-      var total_amount= apple_total+beer_total+water_total+cheese_total;
-
-      document.getElementById("TotalAmount").value= total_amount;
-    }
 </script>
 
 <div class="container">
@@ -348,7 +338,7 @@ function getProducts(){
 
             <div class="card-footer">
                 <div class="pull-right" style="margin: 10px">
-                <input type="submit" name="checkout" onclick="getProducts()" class="btn btn-success pull-right" value="Checkout"></input>
+                <input type="button" name="checkout" data-toggle="modal" data-target="#exampleModal" class="btn btn-success pull-right" value="Checkout"></input>
                     <div class="pull-right" style="margin: 5px">
                         Total price: <b><input type="number" style="cursor: default;" readonly id="TotalAmount" name="TotalAmount" size="4"></b>
                     </div>
@@ -356,6 +346,58 @@ function getProducts(){
             </div>
             </div>
             </div>
+
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+        <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Are you sure?</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            <button type="submit" name="confirmCheckout" class="btn btn-danger">Checkout</button>
+        </div>
+        </div>
+    </div>
+    </div>  
+
+    <div class="modal fade" id="notMoney" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+        <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">You do not have enough money</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        </div>
+        </div>
+    </div>
+    </div> 
+
+    <div class="modal fade" id="deliveryMethod" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+        <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Please choose a retirement method for your order.</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            <button type="submit" name="delivery" class="btn btn-danger">Delivery (+1$)</button>
+            <button type="submit" name="pickup" class="btn btn-danger">Pick-Up (FREE)</button>
+        </div>
+        </div>
+    </div>
+    </div>
+
         </form>
 
         </div>

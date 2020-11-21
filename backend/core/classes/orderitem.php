@@ -1,5 +1,5 @@
 <?php 
-class Order{
+class OrderItem{
     private $_db, $_sessionName,$_cookieName, $_isLoggedIn, $_data;
 
     public function __construct($order=null){
@@ -11,22 +11,10 @@ class Order{
         }
     }
 
-    public function create($fields=array()){
-        if(!$this->_db->insert('customer_order', $fields)){
+    public function createOrderItems($fields=array()){
+        if(!$this->_db->insert('orderitem', $fields)){
             throw new Exception ('There was a problem creating the order.');
             }
-    }
-
-    public function find($order=null){
-        if($order){
-            $field=(is_numeric($order)) ? 'CustomerId' : 'OrderId';
-            $data = $this->_db->get('customer_order', array($field, '=', $order));
-            if($data->count()) {
-                $this->_data = $data->first();
-                return true;
-            }
-        }
-        return false;
     }
 
     public function exists(){
