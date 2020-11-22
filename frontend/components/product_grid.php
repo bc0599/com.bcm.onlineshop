@@ -10,15 +10,6 @@ $order= new Order();
 $order_item= new OrderItem();
 $user=new User();
 
-if(isset($_POST['delivery'])){  
-
-    echo "<script type='text/javascript'>
-    $(document).ready(function(){
-        $('#exampleModal').modal('show');
-    });
-    </script>";
-}
-
 if(isset($_POST['confirmCheckout'])){   
     
 try{
@@ -63,9 +54,7 @@ $unique = date("Ymd") . rand() . $user->data()->CustomerId . $product_apple->dat
     $user->update(array(
         'Balance' => $user->data()->Balance - $_POST['TotalAmount']
     ));
-     
-    header("Location: index.php");
-    exit;
+    
 
     }else{
         echo "<script type='text/javascript'>
@@ -93,12 +82,25 @@ $unique = date("Ymd") . rand() . $user->data()->CustomerId . $product_apple->dat
     var m = 0;
     var b = 0;
 
-    function increment(string) {
+    function buttonAction(string) {
       switch(string) {
 
         case 'delivery':
 
             document.getElementById('TotalAmount').value = (Number(document.getElementById('TotalAmount').value)+ Number(5)).toFixed(2);
+            $("#exampleModal").modal("show");
+
+        break;
+
+        case 'confirm':
+
+        $('#thankYou').modal('show');
+
+        break;
+
+        case 'pickup':
+
+            $("#exampleModal").modal("show");
 
         break;
 
@@ -201,9 +203,13 @@ $unique = date("Ymd") . rand() . $user->data()->CustomerId . $product_apple->dat
 <div class="container">
    <div class="card shopping-cart">
             <div class="card-header bg-danger text-light">
+            <div class="h-25 d-inline-block">
                 <i class="fa fa-shopping-cart" aria-hidden="true"></i>
                 Products
-                <div class="clearfix"></div>
+            </div>
+            <div class="h-25 pull-right d-inline-block">
+                <p class="text-right font-weight-bold"> Balance: <?php echo escape ($user->data()->Balance);?> </p>
+                </div>
             </div>
 
             <form action="" method="post">
@@ -228,8 +234,8 @@ $unique = date("Ymd") . rand() . $user->data()->CustomerId . $product_apple->dat
                             </div>
                             <div class="col-4 col-sm-4 col-md-4">
                                 <div class="quantity">
-                                    <input type="button" onclick="increment('Apple')" value="+" class="plus">
-                                    <input type="number" style="cursor: default;" readonly id="Apple" name="Apple" step="1" max="99" min="0" value="0" title="Qty" class="qty"
+                                    <input type="button" onclick="buttonAction('Apple')" value="+" class="plus">
+                                    <input type="number" style="cursor: default;" readonly id="Apple" name="Apple" step="1" max="99" min="0"  title="Qty" class="qty"
                                            size="4">
                                     <input type="button" onclick="decrement('Apple')" value="-" class="minus">
                                 </div>
@@ -261,8 +267,8 @@ $unique = date("Ymd") . rand() . $user->data()->CustomerId . $product_apple->dat
                             </div>
                             <div class="col-4 col-sm-4 col-md-4">
                                 <div class="quantity">
-                                    <input type="button" onclick="increment('Beer')" value="+" class="plus" >
-                                    <input type="number" style="cursor: default;" readonly id="Beer" name="Beer" step="1" max="99" min="0" value="0" title="Qty" class="qty"
+                                    <input type="button" onclick="buttonAction('Beer')" value="+" class="plus" >
+                                    <input type="number" style="cursor: default;" readonly id="Beer" name="Beer" step="1" max="99" min="0"  title="Qty" class="qty"
                                            size="4">
                                     <input type="button" onclick="decrement('Beer')" value="-" class="minus">
                                 </div>
@@ -294,8 +300,8 @@ $unique = date("Ymd") . rand() . $user->data()->CustomerId . $product_apple->dat
                             </div>
                             <div class="col-4 col-sm-4 col-md-4">
                                 <div class="quantity">
-                                    <input type="button" onclick="increment('Water')" value="+" class="plus">
-                                    <input type="number" style="cursor: default;" readonly id="Water" name="Water" step="1" max="99" min="0" value="0" title="Qty" class="qty"
+                                    <input type="button" onclick="buttonAction('Water')" value="+" class="plus">
+                                    <input type="number" style="cursor: default;" readonly id="Water" name="Water" step="1" max="99" min="0"  title="Qty" class="qty"
                                            size="4">
                                     <input type="button" onclick="decrement('Water')" value="-" class="minus">
                                 </div>
@@ -327,8 +333,8 @@ $unique = date("Ymd") . rand() . $user->data()->CustomerId . $product_apple->dat
                             </div>
                             <div class="col-4 col-sm-4 col-md-4">
                                 <div class="quantity">
-                                    <input type="button" onclick="increment('Cheese')" value="+" class="plus">
-                                    <input type="number" style="cursor: default;" readonly id="Cheese" name="Cheese" step="1" max="99" min="0" value="0" title="Qty" class="qty"
+                                    <input type="button" onclick="buttonAction('Cheese')" value="+" class="plus">
+                                    <input type="number" style="cursor: default;" readonly id="Cheese" name="Cheese" step="1" max="99" min="0"  title="Qty" class="qty"
                                            size="4">
                                     <input type="button" onclick="decrement('Cheese')" value="-" class="minus">
                                 </div>
@@ -354,25 +360,25 @@ $unique = date("Ymd") . rand() . $user->data()->CustomerId . $product_apple->dat
             </div>
             </div>
 
-    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
+    <div class="modal fade" data-backdrop="static" data-keyboard="false" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
         <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLabel">Are you sure?</h5>
+            <h5 class="modal-title"  id="exampleModalLabel">Are you sure?</h5>
             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
             </button>
         </div>
         <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-            <button type="submit" name="confirmCheckout" class="btn btn-danger">Checkout</button>
+            <button type="button" onclick="buttonAction('confirm')" data-dismiss="modal" name="confirmCheckout" class="btn btn-danger">Checkout</button>
         </div>
         </div>
     </div>
     </div>  
 
-    <div class="modal fade" id="notMoney" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
+    <div class="modal fade" data-backdrop="static" data-keyboard="false" id="notMoney" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
         <div class="modal-header">
             <h5 class="modal-title" id="exampleModalLabel">You do not have enough money</h5>
@@ -387,8 +393,27 @@ $unique = date("Ymd") . rand() . $user->data()->CustomerId . $product_apple->dat
     </div>
     </div> 
 
-    <div class="modal fade" id="deliveryMethod" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
+        <div class="modal fade" id="thankYou" role="dialog">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label=""><span>×</span></button>
+                     </div>
+                    <div class="modal-body">
+						<div class="thank-you-pop">
+							<img src="http://goactionstations.co.uk/wp-content/uploads/2017/03/Green-Round-Tick.png" alt="">
+							<h1>Thank You!</h1>
+							<p>Your order has been received and we will contact you soon</p>
+							<h3 class="cupon-pop">Your Id: <span><?php echo escape($user->data()->CustomerId);?></span></h3>
+ 						</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+    <div class="modal fade" data-backdrop="static" data-keyboard="false" id="deliveryMethod" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
         <div class="modal-header">
             <h5 class="modal-title" id="exampleModalLabel">Please choose a retirement method for your order.</h5>
@@ -398,8 +423,8 @@ $unique = date("Ymd") . rand() . $user->data()->CustomerId . $product_apple->dat
         </div>
         <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-            <button type="button" onclick="increment('delivery')" data-dismiss="modal" name="delivery"  class="btn btn-danger">Delivery (+1$)</button>
-            <button type="submit" name="pickup" class="btn btn-danger">Pick-Up (FREE)</button>
+            <button type="button" onclick="buttonAction('delivery')" data-dismiss="modal" name="delivery"  class="btn btn-danger">Delivery (+1$)</button>
+            <button type="button" onclick="buttonAction('pickup')" data-dismiss="modal" name="pickup" class="btn btn-danger">Pick-Up (FREE)</button>
         </div>
         </div>
     </div>
