@@ -240,11 +240,15 @@ $unique = date("Ymd") . rand() . $user->data()->CustomerId . $product_apple->dat
                                     <input type="button" onclick="decrement('Apple')" value="-" class="minus">
                                 </div>
                             </div>
-                            <div class="col-2 col-sm-2 col-md-2 text-right">
-                                <button type="button" class="btn btn-outline-danger btn-xs">
-                                    <i class="fa fa-trash" aria-hidden="true"></i>
-                                </button>
+
+                            <div class="rating margin-left pull-right">
+                                <input type="button" name="rating" value="5" id="5"><label for="5">☆</label>
+                                <input type="button" name="rating" value="4" id="4"><label for="4">☆</label> 
+                                <input type="button" name="rating" value="3" id="3"><label for="3">☆</label>
+                                <input type="button" name="rating" value="2" id="2"><label for="2">☆</label> 
+                                <input type="button" name="rating" value="1" id="1"><label for="1">☆</label>
                             </div>
+
                         </div>
                     </div>
                     <hr>
@@ -273,11 +277,15 @@ $unique = date("Ymd") . rand() . $user->data()->CustomerId . $product_apple->dat
                                     <input type="button" onclick="decrement('Beer')" value="-" class="minus">
                                 </div>
                             </div>
-                            <div class="col-2 col-sm-2 col-md-2 text-right">
-                                <button type="button" class="btn btn-outline-danger btn-xs">
-                                    <i class="fa fa-trash" aria-hidden="true"></i>
-                                </button>
+
+                            <div class="rating margin-left pull-right">
+                                <input type="radio" name="rating" value="5" id="5"><label for="5">☆</label>
+                                <input type="radio" name="rating" value="4" id="4"><label for="4">☆</label> 
+                                <input type="radio" name="rating" value="3" id="3"><label for="3">☆</label>
+                                <input type="radio" name="rating" value="2" id="2"><label for="2">☆</label> 
+                                <input type="radio" name="rating" value="1" id="1"><label for="1">☆</label>
                             </div>
+
                         </div>
                     </div>
                     <hr>
@@ -306,11 +314,15 @@ $unique = date("Ymd") . rand() . $user->data()->CustomerId . $product_apple->dat
                                     <input type="button" onclick="decrement('Water')" value="-" class="minus">
                                 </div>
                             </div>
-                            <div class="col-2 col-sm-2 col-md-2 text-right">
-                                <button type="button" class="btn btn-outline-danger btn-xs">
-                                    <i class="fa fa-trash" aria-hidden="true"></i>
-                                </button>
+
+                            <div class="rating margin-left pull-right">
+                                <input type="radio" name="rating" value="5" id="5"><label for="5">☆</label>
+                                <input type="radio" name="rating" value="4" id="4"><label for="4">☆</label> 
+                                <input type="radio" name="rating" value="3" id="3"><label for="3">☆</label>
+                                <input type="radio" name="rating" value="2" id="2"><label for="2">☆</label> 
+                                <input type="radio" name="rating" value="1" id="1"><label for="1">☆</label>
                             </div>
+
                         </div>
                     </div>
                     <hr>
@@ -339,12 +351,18 @@ $unique = date("Ymd") . rand() . $user->data()->CustomerId . $product_apple->dat
                                     <input type="button" onclick="decrement('Cheese')" value="-" class="minus">
                                 </div>
                             </div>
-                            <div class="col-2 col-sm-2 col-md-2 text-right">
-                                <button type="button" class="btn btn-outline-danger btn-xs">
-                                    <i class="fa fa-trash" aria-hidden="true"></i>
-                                </button>
-                            </div>
+
+
+                <div class="rating margin-left pull-right">
+                    <input type="radio" name="rating" value="5" id="5"><label for="5">☆</label>
+                    <input type="radio" name="rating" value="4" id="4"><label for="4">☆</label> 
+                    <input type="radio" name="rating" value="3" id="3"><label for="3">☆</label>
+                    <input type="radio" name="rating" value="2" id="2"><label for="2">☆</label> 
+                    <input type="radio" name="rating" value="1" id="1"><label for="1">☆</label>
+                </div>
+                    
                         </div>
+                        
                     </div>
                     <hr>
                     <!-- END PRODUCT -->

@@ -1,3 +1,42 @@
+.margin-top { margin-top: 50px; }
+
+.margin-right {margin-right: 50px;}
+
+.margin-left {margin-left: 90px;}
+
+.margin-bottom {margin-bottom: 50px;}
+
+.margin{margin: 50px;}
+
+.rating {
+    display: flex;
+    flex-direction: row-reverse;
+}
+
+.rating>input {
+    display: none
+}
+
+.rating>label {
+    position: relative;
+    width: 1em;
+    font-size: 2vw;
+    color: #FFD600;
+    cursor: pointer
+}
+
+.rating>label::before {
+    content: "\2605";
+    position: absolute;
+    opacity: 0
+}
+
+.rating>label:hover:before,
+.rating>label:hover~label:before {
+    opacity: 1 !important
+}
+
+
 .quantity {
     float: left;
     margin-right: 15px;
