@@ -11,6 +11,12 @@ class Products{
         }
     }
 
+    public function create($fields=array()){
+        if(!$this->_db->insert('product_rating', $fields)){
+            throw new Exception ('There was a problem creating the user.');
+            }
+    }
+
     public function find($product=null){
         if($product){
             $field=(is_numeric($product)) ? 'ProductId' : 'ProductName';

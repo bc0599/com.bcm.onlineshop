@@ -6,67 +6,74 @@ $product_apple= new Products('Apple');
 $product_beer= new Products('Beer');
 $product_water= new Products('Water');
 $product_cheese= new Products('Cheese');
+$product_rating= new Products();
 $order= new Order();
 $order_item= new OrderItem();
 $user=new User();
 
 if(isset($_POST['confirmCheckout'])){   
-    
-try{
-
-$unique = date("Ymd") . rand() . $user->data()->CustomerId . $product_apple->data()->ProductId;
-
-    $order->create(array(
-        'OrderId' => $unique,
-        'CustomerId'=> $user->data()->CustomerId,
-        'TotalAmount'=> $_POST['TotalAmount']
-    ));
-
-    if($_POST['Apple']>0){
-        $order_item->createOrderItems(array(
-            'OrderId'=> $unique,
-            'ProductId' => $product_apple->data()->ProductId,
-            'Quantity' => $_POST['Apple'],
-            'UnitPrice' => 0.30
-        ));
-    }
-    
-    if($_POST['Beer']>0){
-        $order_item->createOrderItems(array(
-            'OrderId'=> $unique,
-            'ProductId' => $product_beer->data()->ProductId,
-            'Quantity' => $_POST['Beer'],
-            'UnitPrice' => 2.00
-        ));
-    }
-    
-    if($_POST['Water']>0){
-        $order_item->createOrderItems(array(
-            'OrderId'=> $unique,
-            'ProductId' => $product_water->data()->ProductId,
-            'Quantity' => $_POST['Water'],
-            'UnitPrice' => 1.00
-        ));
-    }
 
     if($user->data()->Balance > $_POST['TotalAmount']){
 
-    $user->update(array(
-        'Balance' => $user->data()->Balance - $_POST['TotalAmount']
-    ));
+        $user->update(array(
+            'Balance' => $user->data()->Balance - $_POST['TotalAmount']
+        ));
+
+        try{
+
+            $unique = date("Ymd") . rand() . $user->data()->CustomerId . $product_apple->data()->ProductId;
+            
+                $order->create(array(
+                    'OrderId' => $unique,
+                    'CustomerId'=> $user->data()->CustomerId,
+                    'TotalAmount'=> $_POST['TotalAmount']
+                ));
+            
+                if($_POST['Apple']>0){
+                    $order_item->createOrderItems(array(
+                        'OrderId'=> $unique,
+                        'ProductId' => $product_apple->data()->ProductId,
+                        'Quantity' => $_POST['Apple'],
+                        'UnitPrice' => 0.30
+                    ));
+                }
+                
+                if($_POST['Beer']>0){
+                    $order_item->createOrderItems(array(
+                        'OrderId'=> $unique,
+                        'ProductId' => $product_beer->data()->ProductId,
+                        'Quantity' => $_POST['Beer'],
+                        'UnitPrice' => 2.00
+                    ));
+                }
+                
+                if($_POST['Water']>0){
+                    $order_item->createOrderItems(array(
+                        'OrderId'=> $unique,
+                        'ProductId' => $product_water->data()->ProductId,
+                        'Quantity' => $_POST['Water'],
+                        'UnitPrice' => 1.00
+                    ));
+                }
+
+                echo "<script type='text/javascript'>
+                $(document).ready(function(){
+                    $('#thankYou').modal('show');
+                });
+                </script>";
+            
+            }catch(Exception $e){
+                die($e->getMessage());
+            }
+        
     
-
-    }else{
-        echo "<script type='text/javascript'>
-        $(document).ready(function(){
-            $('#notMoney').modal('show');
-        });
-        </script>";
-    }
-
-}catch(Exception $e){
-    die($e->getMessage());
-}
+        }else{
+            echo "<script type='text/javascript'>
+            $(document).ready(function(){
+                $('#notMoney').modal('show');
+            });
+            </script>";
+        }
 }
 ?>
 
@@ -89,12 +96,6 @@ $unique = date("Ymd") . rand() . $user->data()->CustomerId . $product_apple->dat
 
             document.getElementById('TotalAmount').value = (Number(document.getElementById('TotalAmount').value)+ Number(5)).toFixed(2);
             $("#exampleModal").modal("show");
-
-        break;
-
-        case 'confirm':
-
-        $('#thankYou').modal('show');
 
         break;
 
@@ -389,7 +390,7 @@ $unique = date("Ymd") . rand() . $user->data()->CustomerId . $product_apple->dat
         </div>
         <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-            <button type="button" onclick="buttonAction('confirm')" data-dismiss="modal" name="confirmCheckout" class="btn btn-danger">Checkout</button>
+            <button type="submit" name="confirmCheckout" class="btn btn-danger">Checkout</button>
         </div>
         </div>
     </div>
