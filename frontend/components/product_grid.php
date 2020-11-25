@@ -10,242 +10,460 @@ $product_rating= new Products();
 $order= new Order();
 $order_item= new OrderItem();
 $user=new User();
+$rating= DB::getInstance();
 
 if(isset($_POST['appleRating1'])){
 
-    $product_rating->createRating(array(
-        'Customer' => $user->data()->CustomerId,
-        'Product'=> $product_apple->data()->ProductId,
-        'ProductRating'=> 1
-    ));
+    $rating->getRating('product_rating', array('Customer', '=' , $user->data()->CustomerId , 'Product' , '=' , $product_apple->data()->ProductId));
 
-    header('Location: '.$_SERVER['PHP_SELF']);
+    if(!$rating->count()){
+        $product_rating->createRating(array(
+            'Customer' => $user->data()->CustomerId,
+            'Product'=> $product_apple->data()->ProductId,
+            'ProductRating'=> 1
+        ));
+    
+    }else{
+        
+        echo "<script type='text/javascript'>
+        $(document).ready(function(){
+            $('#notMoney').modal('show');
+        });
+        </script>";
+    }
 
 }
 
 if(isset($_POST['appleRating2'])){
 
-    $product_rating->createRating(array(
-        'Customer' => $user->data()->CustomerId,
-        'Product'=> $product_apple->data()->ProductId,
-        'ProductRating'=> 2
-    ));
+    $rating->getRating('product_rating', array('Customer', '=' , $user->data()->CustomerId , 'Product' , '=' , $product_apple->data()->ProductId));
 
-    header('Location: '.$_SERVER['PHP_SELF']);
+    if(!$rating->count()){
+
+        $product_rating->createRating(array(
+            'Customer' => $user->data()->CustomerId,
+            'Product'=> $product_apple->data()->ProductId,
+            'ProductRating'=> 2
+        ));
+
+    }else{
+        
+        echo "<script type='text/javascript'>
+        $(document).ready(function(){
+            $('#notMoney').modal('show');
+        });
+        </script>";
+    }
 
 }
 
 if(isset($_POST['appleRating3'])){
 
-    $product_rating->createRating(array(
-        'Customer' => $user->data()->CustomerId,
-        'Product'=> $product_apple->data()->ProductId,
-        'ProductRating'=> 3
-    ));
+    $rating->getRating('product_rating', array('Customer', '=' , $user->data()->CustomerId , 'Product' , '=' , $product_apple->data()->ProductId));
 
-    header('Location: '.$_SERVER['PHP_SELF']);
+    if(!$rating->count()){
+
+        $product_rating->createRating(array(
+            'Customer' => $user->data()->CustomerId,
+            'Product'=> $product_apple->data()->ProductId,
+            'ProductRating'=> 3
+        ));
+
+    }else{
+    
+    echo "<script type='text/javascript'>
+    $(document).ready(function(){
+        $('#notMoney').modal('show');
+    });
+    </script>";
+    }
 
 }
 
 if(isset($_POST['appleRating4'])){
 
+    $rating->getRating('product_rating', array('Customer', '=' , $user->data()->CustomerId , 'Product' , '=' , $product_apple->data()->ProductId));
+
+    if(!$rating->count()){
+
     $product_rating->createRating(array(
         'Customer' => $user->data()->CustomerId,
         'Product'=> $product_apple->data()->ProductId,
         'ProductRating'=> 4
     ));
 
-    header('Location: '.$_SERVER['PHP_SELF']);
+    }else{
+    
+        echo "<script type='text/javascript'>
+        $(document).ready(function(){
+            $('#notMoney').modal('show');
+        });
+        </script>";
+        }
 }
 
 if(isset($_POST['appleRating5'])){
 
-    $product_rating->createRating(array(
-        'Customer' => $user->data()->CustomerId,
-        'Product'=> $product_apple->data()->ProductId,
-        'ProductRating'=> 5
-    ));
+    $rating->getRating('product_rating', array('Customer', '=' , $user->data()->CustomerId , 'Product' , '=' , $product_apple->data()->ProductId));
 
-    header('Location: '.$_SERVER['PHP_SELF']);
+    if(!$rating->count()){
+
+        $product_rating->createRating(array(
+            'Customer' => $user->data()->CustomerId,
+            'Product'=> $product_apple->data()->ProductId,
+            'ProductRating'=> 5
+        ));
+    
+    }else{
+    
+        echo "<script type='text/javascript'>
+        $(document).ready(function(){
+            $('#notMoney').modal('show');
+        });
+        </script>";
+        }
+    
 }
 
 if(isset($_POST['beerRating1'])){
 
-    $product_rating->createRating(array(
-        'Customer' => $user->data()->CustomerId,
-        'Product'=> $product_beer->data()->ProductId,
-        'ProductRating'=> 1
-    ));
+    $rating->getRating('product_rating', array('Customer', '=' , $user->data()->CustomerId , 'Product' , '=' , $product_beer->data()->ProductId));
 
-    header('Location: '.$_SERVER['PHP_SELF']);
+    if(!$rating->count()){
+
+        $product_rating->createRating(array(
+            'Customer' => $user->data()->CustomerId,
+            'Product'=> $product_beer->data()->ProductId,
+            'ProductRating'=> 1
+        ));
+    
+    }else{
+    
+        echo "<script type='text/javascript'>
+        $(document).ready(function(){
+            $('#notMoney').modal('show');
+        });
+        </script>";
+        }
 
 }
 
 if(isset($_POST['beerRating2'])){
 
-    $product_rating->createRating(array(
-        'Customer' => $user->data()->CustomerId,
-        'Product'=> $product_beer->data()->ProductId,
-        'ProductRating'=> 2
-    ));
+    $rating->getRating('product_rating', array('Customer', '=' , $user->data()->CustomerId , 'Product' , '=' , $product_beer->data()->ProductId));
 
-    header('Location: '.$_SERVER['PHP_SELF']);
+    if(!$rating->count()){
+
+        $product_rating->createRating(array(
+            'Customer' => $user->data()->CustomerId,
+            'Product'=> $product_beer->data()->ProductId,
+            'ProductRating'=> 2
+        ));
+    
+    }else{
+    
+        echo "<script type='text/javascript'>
+        $(document).ready(function(){
+            $('#notMoney').modal('show');
+        });
+        </script>";
+        }
 
 }
 
 if(isset($_POST['beerRating3'])){
 
-    $product_rating->createRating(array(
-        'Customer' => $user->data()->CustomerId,
-        'Product'=> $product_beer->data()->ProductId,
-        'ProductRating'=> 3
-    ));
+    $rating->getRating('product_rating', array('Customer', '=' , $user->data()->CustomerId , 'Product' , '=' , $product_beer->data()->ProductId));
 
-    header('Location: '.$_SERVER['PHP_SELF']);
+    if(!$rating->count()){
+
+        $product_rating->createRating(array(
+            'Customer' => $user->data()->CustomerId,
+            'Product'=> $product_beer->data()->ProductId,
+            'ProductRating'=> 3
+        ));
+
+    }else{
+
+        echo "<script type='text/javascript'>
+        $(document).ready(function(){
+            $('#notMoney').modal('show');
+        });
+        </script>";
+    }
 
 }
 
 if(isset($_POST['beerRating4'])){
 
-    $product_rating->createRating(array(
-        'Customer' => $user->data()->CustomerId,
-        'Product'=> $product_beer->data()->ProductId,
-        'ProductRating'=> 4
-    ));
+    $rating->getRating('product_rating', array('Customer', '=' , $user->data()->CustomerId , 'Product' , '=' , $product_beer->data()->ProductId));
 
-    header('Location: '.$_SERVER['PHP_SELF']);
+    if(!$rating->count()){
 
+        $product_rating->createRating(array(
+            'Customer' => $user->data()->CustomerId,
+            'Product'=> $product_beer->data()->ProductId,
+            'ProductRating'=> 4
+        ));
+
+    }else{
+
+        echo "<script type='text/javascript'>
+        $(document).ready(function(){
+            $('#notMoney').modal('show');
+        });
+        </script>";
+    }
 }
 
 if(isset($_POST['beerRating5'])){
 
-    $product_rating->createRating(array(
-        'Customer' => $user->data()->CustomerId,
-        'Product'=> $product_beer->data()->ProductId,
-        'ProductRating'=> 5
-    ));
+    $rating->getRating('product_rating', array('Customer', '=' , $user->data()->CustomerId , 'Product' , '=' , $product_beer->data()->ProductId));
 
-    header('Location: '.$_SERVER['PHP_SELF']);
+    if(!$rating->count()){
 
+        $product_rating->createRating(array(
+            'Customer' => $user->data()->CustomerId,
+            'Product'=> $product_beer->data()->ProductId,
+            'ProductRating'=> 5
+        ));
+
+    }else{
+
+        echo "<script type='text/javascript'>
+        $(document).ready(function(){
+            $('#notMoney').modal('show');
+        });
+        </script>";
+    }
 }
 
 if(isset($_POST['waterRating1'])){
 
-    $product_rating->createRating(array(
-        'Customer' => $user->data()->CustomerId,
-        'Product'=> $product_water->data()->ProductId,
-        'ProductRating'=> 1
-    ));
+    $rating->getRating('product_rating', array('Customer', '=' , $user->data()->CustomerId , 'Product' , '=' , $product_water->data()->ProductId));
 
-    header('Location: '.$_SERVER['PHP_SELF']);
+    if(!$rating->count()){
+
+        $product_rating->createRating(array(
+            'Customer' => $user->data()->CustomerId,
+            'Product'=> $product_water->data()->ProductId,
+            'ProductRating'=> 1
+        ));
+
+    }else{
+
+        echo "<script type='text/javascript'>
+        $(document).ready(function(){
+            $('#notMoney').modal('show');
+        });
+        </script>";
+    }
 
 }
 
 if(isset($_POST['waterRating2'])){
 
-    $product_rating->createRating(array(
-        'Customer' => $user->data()->CustomerId,
-        'Product'=> $product_water->data()->ProductId,
-        'ProductRating'=> 2
-    ));
+    $rating->getRating('product_rating', array('Customer', '=' , $user->data()->CustomerId , 'Product' , '=' , $product_water->data()->ProductId));
 
-    header('Location: '.$_SERVER['PHP_SELF']);
+    if(!$rating->count()){
+
+        $product_rating->createRating(array(
+            'Customer' => $user->data()->CustomerId,
+            'Product'=> $product_water->data()->ProductId,
+            'ProductRating'=> 2
+        ));
+
+    }else{
+
+        echo "<script type='text/javascript'>
+        $(document).ready(function(){
+            $('#notMoney').modal('show');
+        });
+        </script>";
+    }
 
 }
 
 if(isset($_POST['waterRating3'])){
 
-    $product_rating->createRating(array(
-        'Customer' => $user->data()->CustomerId,
-        'Product'=> $product_water->data()->ProductId,
-        'ProductRating'=> 3
-    ));
+    $rating->getRating('product_rating', array('Customer', '=' , $user->data()->CustomerId , 'Product' , '=' , $product_water->data()->ProductId));
 
-    header('Location: '.$_SERVER['PHP_SELF']);
+    if(!$rating->count()){
+
+        $product_rating->createRating(array(
+            'Customer' => $user->data()->CustomerId,
+            'Product'=> $product_water->data()->ProductId,
+            'ProductRating'=> 3
+        ));
+
+    }else{
+
+        echo "<script type='text/javascript'>
+        $(document).ready(function(){
+            $('#notMoney').modal('show');
+        });
+        </script>";
+    }
 
 }
 
 if(isset($_POST['waterRating4'])){
 
-    $product_rating->createRating(array(
-        'Customer' => $user->data()->CustomerId,
-        'Product'=> $product_water->data()->ProductId,
-        'ProductRating'=> 4
-    ));
+    $rating->getRating('product_rating', array('Customer', '=' , $user->data()->CustomerId , 'Product' , '=' , $product_water->data()->ProductId));
 
-    header('Location: '.$_SERVER['PHP_SELF']);
+    if(!$rating->count()){
+
+        $product_rating->createRating(array(
+            'Customer' => $user->data()->CustomerId,
+            'Product'=> $product_water->data()->ProductId,
+            'ProductRating'=> 4
+        ));
+
+    }else{
+
+        echo "<script type='text/javascript'>
+        $(document).ready(function(){
+            $('#notMoney').modal('show');
+        });
+        </script>";
+    }
 
 }
 
 if(isset($_POST['waterRating5'])){
 
-    $product_rating->createRating(array(
-        'Customer' => $user->data()->CustomerId,
-        'Product'=> $product_water->data()->ProductId,
-        'ProductRating'=> 5
-    ));
+    $rating->getRating('product_rating', array('Customer', '=' , $user->data()->CustomerId , 'Product' , '=' , $product_water->data()->ProductId));
 
-    header('Location: '.$_SERVER['PHP_SELF']);
+    if(!$rating->count()){
+
+        $product_rating->createRating(array(
+            'Customer' => $user->data()->CustomerId,
+            'Product'=> $product_water->data()->ProductId,
+            'ProductRating'=> 5
+        ));
+
+    }else{
+
+        echo "<script type='text/javascript'>
+        $(document).ready(function(){
+            $('#notMoney').modal('show');
+        });
+        </script>";
+    }
 
 }
 
 if(isset($_POST['cheeseRating1'])){
 
-    $product_rating->createRating(array(
-        'Customer' => $user->data()->CustomerId,
-        'Product'=> $product_cheese->data()->ProductId,
-        'ProductRating'=> 1
-    ));
+    $rating->getRating('product_rating', array('Customer', '=' , $user->data()->CustomerId , 'Product' , '=' , $product_cheese->data()->ProductId));
 
-    header('Location: '.$_SERVER['PHP_SELF']);
+    if(!$rating->count()){
 
+        $product_rating->createRating(array(
+            'Customer' => $user->data()->CustomerId,
+            'Product'=> $product_cheese->data()->ProductId,
+            'ProductRating'=> 1
+        ));
+
+    }else{
+
+        echo "<script type='text/javascript'>
+        $(document).ready(function(){
+            $('#notMoney').modal('show');
+        });
+        </script>";
+    }
 }
 
 if(isset($_POST['cheeseRating2'])){
 
-    $product_rating->createRating(array(
-        'Customer' => $user->data()->CustomerId,
-        'Product'=> $product_cheese->data()->ProductId,
-        'ProductRating'=> 2
-    ));
+    $rating->getRating('product_rating', array('Customer', '=' , $user->data()->CustomerId , 'Product' , '=' , $product_cheese->data()->ProductId));
 
-    header('Location: '.$_SERVER['PHP_SELF']);
+    if(!$rating->count()){
+
+        $product_rating->createRating(array(
+            'Customer' => $user->data()->CustomerId,
+            'Product'=> $product_cheese->data()->ProductId,
+            'ProductRating'=> 2
+        ));
+
+    }else{
+
+        echo "<script type='text/javascript'>
+        $(document).ready(function(){
+            $('#notMoney').modal('show');
+        });
+        </script>";
+    }
 
 }
 
 if(isset($_POST['cheeseRating3'])){
 
-    $product_rating->createRating(array(
-        'Customer' => $user->data()->CustomerId,
-        'Product'=> $product_cheese->data()->ProductId,
-        'ProductRating'=> 3
-    ));
+    $rating->getRating('product_rating', array('Customer', '=' , $user->data()->CustomerId , 'Product' , '=' , $product_cheese->data()->ProductId));
 
-    header('Location: '.$_SERVER['PHP_SELF']);
+    if(!$rating->count()){
+
+        $product_rating->createRating(array(
+            'Customer' => $user->data()->CustomerId,
+            'Product'=> $product_cheese->data()->ProductId,
+            'ProductRating'=> 3
+        ));
+
+    }else{
+
+        echo "<script type='text/javascript'>
+        $(document).ready(function(){
+            $('#notMoney').modal('show');
+        });
+        </script>";
+    }
 
 }
 
 if(isset($_POST['cheeseRating4'])){
 
-    $product_rating->createRating(array(
-        'Customer' => $user->data()->CustomerId,
-        'Product'=> $product_cheese->data()->ProductId,
-        'ProductRating'=> 4
-    ));
+    $rating->getRating('product_rating', array('Customer', '=' , $user->data()->CustomerId , 'Product' , '=' , $product_cheese->data()->ProductId));
 
-    header('Location: '.$_SERVER['PHP_SELF']);
+    if(!$rating->count()){
+
+        $product_rating->createRating(array(
+            'Customer' => $user->data()->CustomerId,
+            'Product'=> $product_cheese->data()->ProductId,
+            'ProductRating'=> 4
+        ));
+
+    }else{
+
+        echo "<script type='text/javascript'>
+        $(document).ready(function(){
+            $('#notMoney').modal('show');
+        });
+        </script>";
+    }
 
 }
 
 if(isset($_POST['cheeseRating5'])){
 
-    $product_rating->createRating(array(
-        'Customer' => $user->data()->CustomerId,
-        'Product'=> $product_cheese->data()->ProductId,
-        'ProductRating'=> 5
-    ));
+    $rating->getRating('product_rating', array('Customer', '=' , $user->data()->CustomerId , 'Product' , '=' , $product_cheese->data()->ProductId));
 
-    header('Location: '.$_SERVER['PHP_SELF']);
+    if(!$rating->count()){
+
+        $product_rating->createRating(array(
+            'Customer' => $user->data()->CustomerId,
+            'Product'=> $product_cheese->data()->ProductId,
+            'ProductRating'=> 5
+        ));
+
+    }else{
+
+        echo "<script type='text/javascript'>
+        $(document).ready(function(){
+            $('#notMoney').modal('show');
+        });
+        </script>";
+    }
 
 }
 

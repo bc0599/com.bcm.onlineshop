@@ -2,7 +2,15 @@
 
 require_once '../../backend/core/init.php';
 
-$product= new Products('Apple');
+$rating= DB::getInstance();
+$rating->getRating('product_rating', array('Customer', '=' , '13' , 'Product' , '=' , '2'));
 
- echo $product->data()->ProductName;
+if(!$rating->count()){
+    echo 'No rating for this product';
+}else{
+
+        echo $rating->first()->Product, '<br>';
+    
+}
+
 

@@ -29,7 +29,7 @@ class DB{
                     $x++;
                 }
             }
-            if($this->_query-> execute()){
+            if($this->_query->execute()){
                 $this->_results = $this->_query->fetchAll(PDO::FETCH_OBJ);
                 $this->_count= $this->_query->rowCount();
             }
@@ -63,6 +63,34 @@ class DB{
 
     public function get($table, $where){
         return $this->action('SELECT *', $table, $where);
+    }
+
+    public function findRating($action, $table, $where=array()){
+
+        if(count($where)===6){
+
+            $operators=array('=', '>', '<', '>=', '<=');
+
+            $field=$where[0];
+            $operator=$where[1];
+            $value=$where[2];
+            $field2=$where[3];
+            $operator2=$where[4];
+            $value2=$where[5];
+
+            if(in_array($operator, $operators)){
+                $sql="{$action} FROM {$table} WHERE {$field} {$operator} {$value} AND {$field2} {$operator2} {$value2}";
+
+                if((!$this->query($sql, array($value))->error()) && (!$this->query($sql, array($value2))->error())){
+                    return $this;
+                }
+            }
+        }
+        return false;
+    }
+
+    public function getRating($table, $where){
+        return $this->findRating('SELECT *', $table, $where);
     }
 
     public function delete($table, $where){
