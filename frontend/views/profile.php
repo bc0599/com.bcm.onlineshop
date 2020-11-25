@@ -11,6 +11,7 @@ require_once '../../backend/core/init.php';
 
 $user=new User();
 $order= new Order();
+
 if($user->isLoggedIn()){
 require "../components/user_header.php";
 require "../components/product_grid.php";

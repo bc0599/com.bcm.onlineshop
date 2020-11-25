@@ -11,6 +11,244 @@ $order= new Order();
 $order_item= new OrderItem();
 $user=new User();
 
+if(isset($_POST['appleRating1'])){
+
+    $product_rating->createRating(array(
+        'Customer' => $user->data()->CustomerId,
+        'Product'=> $product_apple->data()->ProductId,
+        'ProductRating'=> 1
+    ));
+
+    header('Location: '.$_SERVER['PHP_SELF']);
+
+}
+
+if(isset($_POST['appleRating2'])){
+
+    $product_rating->createRating(array(
+        'Customer' => $user->data()->CustomerId,
+        'Product'=> $product_apple->data()->ProductId,
+        'ProductRating'=> 2
+    ));
+
+    header('Location: '.$_SERVER['PHP_SELF']);
+
+}
+
+if(isset($_POST['appleRating3'])){
+
+    $product_rating->createRating(array(
+        'Customer' => $user->data()->CustomerId,
+        'Product'=> $product_apple->data()->ProductId,
+        'ProductRating'=> 3
+    ));
+
+    header('Location: '.$_SERVER['PHP_SELF']);
+
+}
+
+if(isset($_POST['appleRating4'])){
+
+    $product_rating->createRating(array(
+        'Customer' => $user->data()->CustomerId,
+        'Product'=> $product_apple->data()->ProductId,
+        'ProductRating'=> 4
+    ));
+
+    header('Location: '.$_SERVER['PHP_SELF']);
+}
+
+if(isset($_POST['appleRating5'])){
+
+    $product_rating->createRating(array(
+        'Customer' => $user->data()->CustomerId,
+        'Product'=> $product_apple->data()->ProductId,
+        'ProductRating'=> 5
+    ));
+
+    header('Location: '.$_SERVER['PHP_SELF']);
+}
+
+if(isset($_POST['beerRating1'])){
+
+    $product_rating->createRating(array(
+        'Customer' => $user->data()->CustomerId,
+        'Product'=> $product_beer->data()->ProductId,
+        'ProductRating'=> 1
+    ));
+
+    header('Location: '.$_SERVER['PHP_SELF']);
+
+}
+
+if(isset($_POST['beerRating2'])){
+
+    $product_rating->createRating(array(
+        'Customer' => $user->data()->CustomerId,
+        'Product'=> $product_beer->data()->ProductId,
+        'ProductRating'=> 2
+    ));
+
+    header('Location: '.$_SERVER['PHP_SELF']);
+
+}
+
+if(isset($_POST['beerRating3'])){
+
+    $product_rating->createRating(array(
+        'Customer' => $user->data()->CustomerId,
+        'Product'=> $product_beer->data()->ProductId,
+        'ProductRating'=> 3
+    ));
+
+    header('Location: '.$_SERVER['PHP_SELF']);
+
+}
+
+if(isset($_POST['beerRating4'])){
+
+    $product_rating->createRating(array(
+        'Customer' => $user->data()->CustomerId,
+        'Product'=> $product_beer->data()->ProductId,
+        'ProductRating'=> 4
+    ));
+
+    header('Location: '.$_SERVER['PHP_SELF']);
+
+}
+
+if(isset($_POST['beerRating5'])){
+
+    $product_rating->createRating(array(
+        'Customer' => $user->data()->CustomerId,
+        'Product'=> $product_beer->data()->ProductId,
+        'ProductRating'=> 5
+    ));
+
+    header('Location: '.$_SERVER['PHP_SELF']);
+
+}
+
+if(isset($_POST['waterRating1'])){
+
+    $product_rating->createRating(array(
+        'Customer' => $user->data()->CustomerId,
+        'Product'=> $product_water->data()->ProductId,
+        'ProductRating'=> 1
+    ));
+
+    header('Location: '.$_SERVER['PHP_SELF']);
+
+}
+
+if(isset($_POST['waterRating2'])){
+
+    $product_rating->createRating(array(
+        'Customer' => $user->data()->CustomerId,
+        'Product'=> $product_water->data()->ProductId,
+        'ProductRating'=> 2
+    ));
+
+    header('Location: '.$_SERVER['PHP_SELF']);
+
+}
+
+if(isset($_POST['waterRating3'])){
+
+    $product_rating->createRating(array(
+        'Customer' => $user->data()->CustomerId,
+        'Product'=> $product_water->data()->ProductId,
+        'ProductRating'=> 3
+    ));
+
+    header('Location: '.$_SERVER['PHP_SELF']);
+
+}
+
+if(isset($_POST['waterRating4'])){
+
+    $product_rating->createRating(array(
+        'Customer' => $user->data()->CustomerId,
+        'Product'=> $product_water->data()->ProductId,
+        'ProductRating'=> 4
+    ));
+
+    header('Location: '.$_SERVER['PHP_SELF']);
+
+}
+
+if(isset($_POST['waterRating5'])){
+
+    $product_rating->createRating(array(
+        'Customer' => $user->data()->CustomerId,
+        'Product'=> $product_water->data()->ProductId,
+        'ProductRating'=> 5
+    ));
+
+    header('Location: '.$_SERVER['PHP_SELF']);
+
+}
+
+if(isset($_POST['cheeseRating1'])){
+
+    $product_rating->createRating(array(
+        'Customer' => $user->data()->CustomerId,
+        'Product'=> $product_cheese->data()->ProductId,
+        'ProductRating'=> 1
+    ));
+
+    header('Location: '.$_SERVER['PHP_SELF']);
+
+}
+
+if(isset($_POST['cheeseRating2'])){
+
+    $product_rating->createRating(array(
+        'Customer' => $user->data()->CustomerId,
+        'Product'=> $product_cheese->data()->ProductId,
+        'ProductRating'=> 2
+    ));
+
+    header('Location: '.$_SERVER['PHP_SELF']);
+
+}
+
+if(isset($_POST['cheeseRating3'])){
+
+    $product_rating->createRating(array(
+        'Customer' => $user->data()->CustomerId,
+        'Product'=> $product_cheese->data()->ProductId,
+        'ProductRating'=> 3
+    ));
+
+    header('Location: '.$_SERVER['PHP_SELF']);
+
+}
+
+if(isset($_POST['cheeseRating4'])){
+
+    $product_rating->createRating(array(
+        'Customer' => $user->data()->CustomerId,
+        'Product'=> $product_cheese->data()->ProductId,
+        'ProductRating'=> 4
+    ));
+
+    header('Location: '.$_SERVER['PHP_SELF']);
+
+}
+
+if(isset($_POST['cheeseRating5'])){
+
+    $product_rating->createRating(array(
+        'Customer' => $user->data()->CustomerId,
+        'Product'=> $product_cheese->data()->ProductId,
+        'ProductRating'=> 5
+    ));
+
+    header('Location: '.$_SERVER['PHP_SELF']);
+
+}
+
 if(isset($_POST['confirmCheckout'])){   
 
     if($user->data()->Balance > $_POST['TotalAmount']){
@@ -68,13 +306,17 @@ if(isset($_POST['confirmCheckout'])){
         
     
         }else{
+
             echo "<script type='text/javascript'>
             $(document).ready(function(){
                 $('#notMoney').modal('show');
             });
             </script>";
+
         }
+
 }
+
 ?>
 
 <head><link rel="stylesheet" href="https:cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous"></head>
@@ -243,11 +485,11 @@ if(isset($_POST['confirmCheckout'])){
                             </div>
 
                             <div class="rating margin-left pull-right">
-                                <input type="button" name="rating" value="5" id="5"><label for="5">☆</label>
-                                <input type="button" name="rating" value="4" id="4"><label for="4">☆</label> 
-                                <input type="button" name="rating" value="3" id="3"><label for="3">☆</label>
-                                <input type="button" name="rating" value="2" id="2"><label for="2">☆</label> 
-                                <input type="button" name="rating" value="1" id="1"><label for="1">☆</label>
+                                <input type="submit" name="appleRating5" value="apple5" id="apple5"><label for="apple5">☆</label>
+                                <input type="submit" name="appleRating4" value="apple4" id="apple4"><label for="apple4">☆</label> 
+                                <input type="submit" name="appleRating3" value="apple3" id="apple3"><label for="apple3">☆</label>
+                                <input type="submit" name="appleRating2" value="apple2" id="apple2"><label for="apple2">☆</label> 
+                                <input type="submit" name="appleRating1" value="apple1" id="apple1"><label for="apple1">☆</label>
                             </div>
 
                         </div>
@@ -280,11 +522,11 @@ if(isset($_POST['confirmCheckout'])){
                             </div>
 
                             <div class="rating margin-left pull-right">
-                                <input type="radio" name="rating" value="5" id="5"><label for="5">☆</label>
-                                <input type="radio" name="rating" value="4" id="4"><label for="4">☆</label> 
-                                <input type="radio" name="rating" value="3" id="3"><label for="3">☆</label>
-                                <input type="radio" name="rating" value="2" id="2"><label for="2">☆</label> 
-                                <input type="radio" name="rating" value="1" id="1"><label for="1">☆</label>
+                                <input type="submit" name="beerRating5" value="beer5" id="beer5"><label for="beer5">☆</label>
+                                <input type="submit" name="beerRating4" value="beer4" id="berr4"><label for="beer4">☆</label> 
+                                <input type="submit" name="beerRating3" value="beer3" id="beer3"><label for="beer3">☆</label>
+                                <input type="submit" name="beerRating2" value="beer2" id="beer2"><label for="beer2">☆</label> 
+                                <input type="submit" name="beerRating1" value="beer1" id="beer1"><label for="beer1">☆</label>
                             </div>
 
                         </div>
@@ -317,11 +559,11 @@ if(isset($_POST['confirmCheckout'])){
                             </div>
 
                             <div class="rating margin-left pull-right">
-                                <input type="radio" name="rating" value="5" id="5"><label for="5">☆</label>
-                                <input type="radio" name="rating" value="4" id="4"><label for="4">☆</label> 
-                                <input type="radio" name="rating" value="3" id="3"><label for="3">☆</label>
-                                <input type="radio" name="rating" value="2" id="2"><label for="2">☆</label> 
-                                <input type="radio" name="rating" value="1" id="1"><label for="1">☆</label>
+                                <input type="submit" name="waterRating5" value="water5" id="water5"><label for="water5">☆</label>
+                                <input type="submit" name="waterRating4" value="water4" id="water4"><label for="water4">☆</label> 
+                                <input type="submit" name="waterRating3" value="water3" id="water3"><label for="water3">☆</label>
+                                <input type="submit" name="waterRating2" value="water2" id="water2"><label for="water2">☆</label> 
+                                <input type="submit" name="waterRating1" value="water1" id="water1"><label for="water1">☆</label>
                             </div>
 
                         </div>
@@ -355,11 +597,11 @@ if(isset($_POST['confirmCheckout'])){
 
 
                 <div class="rating margin-left pull-right">
-                    <input type="radio" name="rating" value="5" id="5"><label for="5">☆</label>
-                    <input type="radio" name="rating" value="4" id="4"><label for="4">☆</label> 
-                    <input type="radio" name="rating" value="3" id="3"><label for="3">☆</label>
-                    <input type="radio" name="rating" value="2" id="2"><label for="2">☆</label> 
-                    <input type="radio" name="rating" value="1" id="1"><label for="1">☆</label>
+                    <input type="submit" name="cheeseRating5" value="cheese5" id="cheese5"><label for="cheese5">☆</label>
+                    <input type="submit" name="cheeseRating4" value="cheese4" id="cheese4"><label for="cheese4">☆</label> 
+                    <input type="submit" name="cheeseRating3" value="cheese3" id="cheese3"><label for="cheese3">☆</label>
+                    <input type="submit" name="cheeseRating2" value="cheese2" id="cheese2"><label for="cheese2">☆</label> 
+                    <input type="submit" name="cheeseRating1" value="cheese1" id="cheese1"><label for="cheese1">☆</label>
                 </div>
                     
                         </div>

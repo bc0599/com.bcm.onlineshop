@@ -11,9 +11,9 @@ class Products{
         }
     }
 
-    public function create($fields=array()){
+    public function createRating($fields=array()){
         if(!$this->_db->insert('product_rating', $fields)){
-            throw new Exception ('There was a problem creating the user.');
+            throw new Exception ('There was a problem creating the rating.');
             }
     }
 
