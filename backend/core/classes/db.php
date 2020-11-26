@@ -20,10 +20,12 @@ class DB{
     }
 
     public function query($sql, $params=array()){
+
         $this->_error=false;
         if($this->_query=$this->_pdo->prepare($sql)){
             $x=1;
             if(count($params)){
+                
                 foreach($params as $param){
                     $this->_query->bindValue($x, $param);
                     $x++;
@@ -80,7 +82,7 @@ class DB{
 
             if(in_array($operator, $operators)){
                 $sql="{$action} FROM {$table} WHERE {$field} {$operator} {$value} AND {$field2} {$operator2} {$value2}";
-
+                
                 if((!$this->query($sql, array($value))->error()) && (!$this->query($sql, array($value2))->error())){
                     return $this;
                 }
@@ -92,6 +94,34 @@ class DB{
     public function getRating($table, $where){
         return $this->findRating('SELECT *', $table, $where);
     }
+
+    public function findAvgRating($action, $avgField, $table, $where=array()){
+
+        if(count($where)===3){
+
+            $operators=array('=', '>', '<', '>=', '<=');
+
+            $field=$where[0];
+            $operator=$where[1];
+            $value=$where[2];
+
+            if(in_array($operator, $operators)){
+
+                $sql="{$action} ROUND(AVG({$avgField}),1) 'ProductRating' FROM {$table} WHERE {$field} {$operator} ?";
+                
+                if(!$this->query($sql, array($value))->error()){
+                    return $this;
+                }
+            }
+        }
+        return false;
+    }
+
+
+    public function getAvgRating($avgField, $table, $where){
+        return $this->findAvgRating('SELECT', $avgField, $table, $where);
+    }
+
 
     public function delete($table, $where){
         return $this->action('DELETE', $table, $where);

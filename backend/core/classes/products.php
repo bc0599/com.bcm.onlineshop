@@ -6,8 +6,12 @@ class Products{
 
         $this->_db= DB::getInstance();
 
-        if($product){
+        if(!is_numeric($product)){
             $this->find($product);
+        }
+
+        if(is_numeric($product)){
+            $this->avgRating($product);
         }
     }
 
@@ -18,10 +22,27 @@ class Products{
     }
 
     public function find($product=null){
+
         if($product){
             $field=(is_numeric($product)) ? 'ProductId' : 'ProductName';
             $data = $this->_db->get('product', array($field, '=', $product));
             if($data->count()) {
+                $this->_data = $data->first();
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public function avgRating($product=null){
+
+
+        if($product){
+            $field=(is_numeric($product)) ? 'Product' : 'Customer';
+
+            $data = $this->_db->getAvgRating('ProductRating', 'product_rating', array($field, '=', $product));
+
+            if(is_object($data) && $data->count()) {
                 $this->_data = $data->first();
                 return true;
             }

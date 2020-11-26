@@ -7,10 +7,14 @@ $product_beer= new Products('Beer');
 $product_water= new Products('Water');
 $product_cheese= new Products('Cheese');
 $product_rating= new Products();
+$rating= DB::getInstance();
+$avg_rating_apple= new Products(1);
+$avg_rating_beer= new Products(2);
+$avg_rating_water= new Products(3);
+$avg_rating_cheese= new Products(4);
 $order= new Order();
 $order_item= new OrderItem();
 $user=new User();
-$rating= DB::getInstance();
 
 if(isset($_POST['appleRating1'])){
 
@@ -22,12 +26,18 @@ if(isset($_POST['appleRating1'])){
             'Product'=> $product_apple->data()->ProductId,
             'ProductRating'=> 1
         ));
+
+        echo "<script type='text/javascript'>
+        $(document).ready(function(){
+            $('#ratingSent').modal('show');
+        });
+        </script>";
     
     }else{
         
         echo "<script type='text/javascript'>
         $(document).ready(function(){
-            $('#notMoney').modal('show');
+            $('#alreadyRated').modal('show');
         });
         </script>";
     }
@@ -45,12 +55,17 @@ if(isset($_POST['appleRating2'])){
             'Product'=> $product_apple->data()->ProductId,
             'ProductRating'=> 2
         ));
+        echo "<script type='text/javascript'>
+        $(document).ready(function(){
+            $('#ratingSent').modal('show');
+        });
+        </script>";
 
     }else{
         
         echo "<script type='text/javascript'>
         $(document).ready(function(){
-            $('#notMoney').modal('show');
+            $('#alreadyRated').modal('show');
         });
         </script>";
     }
@@ -69,11 +84,17 @@ if(isset($_POST['appleRating3'])){
             'ProductRating'=> 3
         ));
 
+        echo "<script type='text/javascript'>
+        $(document).ready(function(){
+            $('#ratingSent').modal('show');
+        });
+        </script>";
+
     }else{
     
     echo "<script type='text/javascript'>
     $(document).ready(function(){
-        $('#notMoney').modal('show');
+        $('#alreadyRated').modal('show');
     });
     </script>";
     }
@@ -92,11 +113,17 @@ if(isset($_POST['appleRating4'])){
         'ProductRating'=> 4
     ));
 
+    echo "<script type='text/javascript'>
+    $(document).ready(function(){
+        $('#ratingSent').modal('show');
+    });
+    </script>";
+
     }else{
     
         echo "<script type='text/javascript'>
         $(document).ready(function(){
-            $('#notMoney').modal('show');
+            $('#alreadyRated').modal('show');
         });
         </script>";
         }
@@ -113,12 +140,18 @@ if(isset($_POST['appleRating5'])){
             'Product'=> $product_apple->data()->ProductId,
             'ProductRating'=> 5
         ));
+
+        echo "<script type='text/javascript'>
+        $(document).ready(function(){
+            $('#ratingSent').modal('show');
+        });
+        </script>";
     
     }else{
     
         echo "<script type='text/javascript'>
         $(document).ready(function(){
-            $('#notMoney').modal('show');
+            $('#alreadyRated').modal('show');
         });
         </script>";
         }
@@ -136,12 +169,18 @@ if(isset($_POST['beerRating1'])){
             'Product'=> $product_beer->data()->ProductId,
             'ProductRating'=> 1
         ));
+
+        echo "<script type='text/javascript'>
+        $(document).ready(function(){
+            $('#ratingSent').modal('show');
+        });
+        </script>";
     
     }else{
     
         echo "<script type='text/javascript'>
         $(document).ready(function(){
-            $('#notMoney').modal('show');
+            $('#alreadyRated').modal('show');
         });
         </script>";
         }
@@ -159,12 +198,18 @@ if(isset($_POST['beerRating2'])){
             'Product'=> $product_beer->data()->ProductId,
             'ProductRating'=> 2
         ));
+
+        echo "<script type='text/javascript'>
+        $(document).ready(function(){
+            $('#ratingSent').modal('show');
+        });
+        </script>";
     
     }else{
     
         echo "<script type='text/javascript'>
         $(document).ready(function(){
-            $('#notMoney').modal('show');
+            $('#alreadyRated').modal('show');
         });
         </script>";
         }
@@ -183,16 +228,23 @@ if(isset($_POST['beerRating3'])){
             'ProductRating'=> 3
         ));
 
+        echo "<script type='text/javascript'>
+        $(document).ready(function(){
+            $('#ratingSent').modal('show');
+        });
+        </script>";
+
     }else{
 
         echo "<script type='text/javascript'>
         $(document).ready(function(){
-            $('#notMoney').modal('show');
+            $('#alreadyRated').modal('show');
         });
         </script>";
     }
 
 }
+
 
 if(isset($_POST['beerRating4'])){
 
@@ -206,14 +258,21 @@ if(isset($_POST['beerRating4'])){
             'ProductRating'=> 4
         ));
 
+        echo "<script type='text/javascript'>
+        $(document).ready(function(){
+            $('#ratingSent').modal('show');
+        });
+        </script>";
+
     }else{
 
         echo "<script type='text/javascript'>
         $(document).ready(function(){
-            $('#notMoney').modal('show');
+            $('#alreadyRated').modal('show');
         });
         </script>";
     }
+
 }
 
 if(isset($_POST['beerRating5'])){
@@ -228,11 +287,17 @@ if(isset($_POST['beerRating5'])){
             'ProductRating'=> 5
         ));
 
+        echo "<script type='text/javascript'>
+        $(document).ready(function(){
+            $('#ratingSent').modal('show');
+        });
+        </script>";
+
     }else{
 
         echo "<script type='text/javascript'>
         $(document).ready(function(){
-            $('#notMoney').modal('show');
+            $('#alreadyRated').modal('show');
         });
         </script>";
     }
@@ -250,11 +315,17 @@ if(isset($_POST['waterRating1'])){
             'ProductRating'=> 1
         ));
 
+        echo "<script type='text/javascript'>
+        $(document).ready(function(){
+            $('#ratingSent').modal('show');
+        });
+        </script>";
+
     }else{
 
         echo "<script type='text/javascript'>
         $(document).ready(function(){
-            $('#notMoney').modal('show');
+            $('#alreadyRated').modal('show');
         });
         </script>";
     }
@@ -273,11 +344,17 @@ if(isset($_POST['waterRating2'])){
             'ProductRating'=> 2
         ));
 
+        echo "<script type='text/javascript'>
+        $(document).ready(function(){
+            $('#ratingSent').modal('show');
+        });
+        </script>";
+
     }else{
 
         echo "<script type='text/javascript'>
         $(document).ready(function(){
-            $('#notMoney').modal('show');
+            $('#alreadyRated').modal('show');
         });
         </script>";
     }
@@ -296,11 +373,17 @@ if(isset($_POST['waterRating3'])){
             'ProductRating'=> 3
         ));
 
+        echo "<script type='text/javascript'>
+        $(document).ready(function(){
+            $('#ratingSent').modal('show');
+        });
+        </script>";
+
     }else{
 
         echo "<script type='text/javascript'>
         $(document).ready(function(){
-            $('#notMoney').modal('show');
+            $('#alreadyRated').modal('show');
         });
         </script>";
     }
@@ -319,11 +402,17 @@ if(isset($_POST['waterRating4'])){
             'ProductRating'=> 4
         ));
 
+        echo "<script type='text/javascript'>
+        $(document).ready(function(){
+            $('#ratingSent').modal('show');
+        });
+        </script>";
+
     }else{
 
         echo "<script type='text/javascript'>
         $(document).ready(function(){
-            $('#notMoney').modal('show');
+            $('#alreadyRated').modal('show');
         });
         </script>";
     }
@@ -342,11 +431,17 @@ if(isset($_POST['waterRating5'])){
             'ProductRating'=> 5
         ));
 
+        echo "<script type='text/javascript'>
+        $(document).ready(function(){
+            $('#ratingSent').modal('show');
+        });
+        </script>";
+
     }else{
 
         echo "<script type='text/javascript'>
         $(document).ready(function(){
-            $('#notMoney').modal('show');
+            $('#alreadyRated').modal('show');
         });
         </script>";
     }
@@ -365,11 +460,17 @@ if(isset($_POST['cheeseRating1'])){
             'ProductRating'=> 1
         ));
 
+        echo "<script type='text/javascript'>
+        $(document).ready(function(){
+            $('#ratingSent').modal('show');
+        });
+        </script>";
+
     }else{
 
         echo "<script type='text/javascript'>
         $(document).ready(function(){
-            $('#notMoney').modal('show');
+            $('#alreadyRated').modal('show');
         });
         </script>";
     }
@@ -387,11 +488,17 @@ if(isset($_POST['cheeseRating2'])){
             'ProductRating'=> 2
         ));
 
+        echo "<script type='text/javascript'>
+        $(document).ready(function(){
+            $('#ratingSent').modal('show');
+        });
+        </script>";
+
     }else{
 
         echo "<script type='text/javascript'>
         $(document).ready(function(){
-            $('#notMoney').modal('show');
+            $('#alreadyRated').modal('show');
         });
         </script>";
     }
@@ -410,11 +517,17 @@ if(isset($_POST['cheeseRating3'])){
             'ProductRating'=> 3
         ));
 
+        echo "<script type='text/javascript'>
+        $(document).ready(function(){
+            $('#ratingSent').modal('show');
+        });
+        </script>";
+
     }else{
 
         echo "<script type='text/javascript'>
         $(document).ready(function(){
-            $('#notMoney').modal('show');
+            $('#alreadyRated').modal('show');
         });
         </script>";
     }
@@ -433,11 +546,17 @@ if(isset($_POST['cheeseRating4'])){
             'ProductRating'=> 4
         ));
 
+        echo "<script type='text/javascript'>
+        $(document).ready(function(){
+            $('#ratingSent').modal('show');
+        });
+        </script>";
+
     }else{
 
         echo "<script type='text/javascript'>
         $(document).ready(function(){
-            $('#notMoney').modal('show');
+            $('#alreadyRated').modal('show');
         });
         </script>";
     }
@@ -456,11 +575,17 @@ if(isset($_POST['cheeseRating5'])){
             'ProductRating'=> 5
         ));
 
+        echo "<script type='text/javascript'>
+        $(document).ready(function(){
+            $('#ratingSent').modal('show');
+        });
+        </script>";
+
     }else{
 
         echo "<script type='text/javascript'>
         $(document).ready(function(){
-            $('#notMoney').modal('show');
+            $('#alreadyRated').modal('show');
         });
         </script>";
     }
@@ -710,6 +835,8 @@ if(isset($_POST['confirmCheckout'])){
                                 <input type="submit" name="appleRating1" value="apple1" id="apple1"><label for="apple1">☆</label>
                             </div>
 
+                            <p class="text-sm-right margin-left font-weight-bold">Other users have rated it: <?php echo escape($avg_rating_apple->data()->ProductRating); ?></p>
+
                         </div>
                     </div>
                     <hr>
@@ -741,11 +868,13 @@ if(isset($_POST['confirmCheckout'])){
 
                             <div class="rating margin-left pull-right">
                                 <input type="submit" name="beerRating5" value="beer5" id="beer5"><label for="beer5">☆</label>
-                                <input type="submit" name="beerRating4" value="beer4" id="berr4"><label for="beer4">☆</label> 
+                                <input type="submit" name="beerRating4" value="beer4" id="beer4"><label for="beer4">☆</label> 
                                 <input type="submit" name="beerRating3" value="beer3" id="beer3"><label for="beer3">☆</label>
                                 <input type="submit" name="beerRating2" value="beer2" id="beer2"><label for="beer2">☆</label> 
                                 <input type="submit" name="beerRating1" value="beer1" id="beer1"><label for="beer1">☆</label>
                             </div>
+
+                            <p class="text-sm-right margin-left font-weight-bold">Other users have rated it: <?php echo escape($avg_rating_beer->data()->ProductRating); ?></p>
 
                         </div>
                     </div>
@@ -784,6 +913,8 @@ if(isset($_POST['confirmCheckout'])){
                                 <input type="submit" name="waterRating1" value="water1" id="water1"><label for="water1">☆</label>
                             </div>
 
+                            <p class="text-sm-right margin-left font-weight-bold">Other users have rated it: <?php echo escape($avg_rating_water->data()->ProductRating); ?></p>
+
                         </div>
                     </div>
                     <hr>
@@ -814,13 +945,15 @@ if(isset($_POST['confirmCheckout'])){
                             </div>
 
 
-                <div class="rating margin-left pull-right">
-                    <input type="submit" name="cheeseRating5" value="cheese5" id="cheese5"><label for="cheese5">☆</label>
-                    <input type="submit" name="cheeseRating4" value="cheese4" id="cheese4"><label for="cheese4">☆</label> 
-                    <input type="submit" name="cheeseRating3" value="cheese3" id="cheese3"><label for="cheese3">☆</label>
-                    <input type="submit" name="cheeseRating2" value="cheese2" id="cheese2"><label for="cheese2">☆</label> 
-                    <input type="submit" name="cheeseRating1" value="cheese1" id="cheese1"><label for="cheese1">☆</label>
-                </div>
+                            <div class="rating margin-left pull-right">
+                                <input type="submit" name="cheeseRating5" value="cheese5" id="cheese5"><label for="cheese5">☆</label>
+                                <input type="submit" name="cheeseRating4" value="cheese4" id="cheese4"><label for="cheese4">☆</label> 
+                                <input type="submit" name="cheeseRating3" value="cheese3" id="cheese3"><label for="cheese3">☆</label>
+                                <input type="submit" name="cheeseRating2" value="cheese2" id="cheese2"><label for="cheese2">☆</label> 
+                                <input type="submit" name="cheeseRating1" value="cheese1" id="cheese1"><label for="cheese1">☆</label>
+                            </div>
+
+                            <p class="text-sm-right margin-left font-weight-bold">Other users have rated it: <?php echo escape($avg_rating_cheese->data()->ProductRating); ?></p>
                     
                         </div>
                         
@@ -861,6 +994,54 @@ if(isset($_POST['confirmCheckout'])){
         <div class="modal-content">
         <div class="modal-header">
             <h5 class="modal-title" id="exampleModalLabel">You do not have enough money</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        </div>
+        </div>
+    </div>
+    </div> 
+
+    <div class="modal fade" data-backdrop="static" data-keyboard="false" id="notMoney" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+        <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">You do not have enough money</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        </div>
+        </div>
+    </div>
+    </div> 
+
+    <div class="modal fade bd-example-modal-lg" data-backdrop="static" data-keyboard="false" id="alreadyRated" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+        <div class="modal-content">
+        <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Oops! Seems like you already rated this product.</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        </div>
+        </div>
+    </div>
+    </div>
+
+    <div class="modal fade bd-example-modal-lg" data-backdrop="static" data-keyboard="false" id="ratingSent" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+        <div class="modal-content">
+        <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Thank you! Your opinion is very important to us! </h5>
             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
             </button>
@@ -913,3 +1094,9 @@ if(isset($_POST['confirmCheckout'])){
 
         </div>
 </div>
+
+<script>
+if ( window.history.replaceState ) {
+  window.history.replaceState( null, null, window.location.href );
+}
+</script>

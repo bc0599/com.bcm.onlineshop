@@ -14,3 +14,6 @@ if(!$rating->count()){
 }
 
 
+echo $avg_rating->data()->ProductRating;
+
+
